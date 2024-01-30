@@ -3,6 +3,7 @@ extends CharacterBody3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var speed: float = 5;
+@export var sensitivity : float = 2.0;
 
 func _init():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
@@ -24,7 +25,7 @@ func apply_velocity(direction: Vector3) -> void:
 
 func get_direction() -> Vector3:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down");
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized();
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() * sensitivity;
 	return direction;
 
 func apply_gravity(gravity: float) -> void:
