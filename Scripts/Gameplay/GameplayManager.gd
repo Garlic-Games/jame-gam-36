@@ -7,7 +7,6 @@ func _ready():
 	GameStateMachine.connect("stateChange", onGameStateChange);
 
 func EndGame():
-	print("KP")
 	GameStateMachine.changeState(GameStateMachine.GAME_STATE.GAME_OVER);
 
 

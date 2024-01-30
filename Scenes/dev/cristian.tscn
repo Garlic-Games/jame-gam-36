@@ -26,11 +26,7 @@ tonemap_mode = 2
 
 [node name="Cristian" type="Node3D" node_paths=PackedStringArray("gameOverMenu")]
 script = ExtResource("1_jsmin")
-gameOverMenu = NodePath("GameOverMenu")
-
-[node name="GameOverMenu" parent="." instance=ExtResource("2_7knyn")]
-layer = 10
-visible = false
+gameOverMenu = NodePath("UI/GameOverMenu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -109,6 +105,10 @@ grow_vertical = 2
 max_value = 1000.0
 step = 1.0
 fill_mode = 3
+
+[node name="GameOverMenu" parent="UI" instance=ExtResource("2_7knyn")]
+layer = 10
+visible = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.813253, 0.58191, 0, -0.58191, 0.813253, 0, 0.84051, 3.4921)
