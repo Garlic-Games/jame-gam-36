@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4g5sigk7o8tn"]
+[gd_scene load_steps=12 format=3 uid="uid://b4g5sigk7o8tn"]
 
 [ext_resource type="Script" path="res://Scripts/mechanics/heat.gd" id="1_g6aql"]
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_jsmin"]
-[ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_7knyn"]
 [ext_resource type="PackedScene" uid="uid://cka4heni3dqxn" path="res://Prefabs/bird.tscn" id="2_fb7rp"]
 [ext_resource type="PackedScene" uid="uid://u40l62v2dp8d" path="res://Prefabs/obstacle.tscn" id="3_n1cgf"]
 [ext_resource type="Script" path="res://Scripts/obstacle/obstacle_container.gd" id="3_veuxn"]
@@ -24,13 +23,8 @@ tonemap_mode = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w2hin"]
 
-[node name="Cristian" type="Node3D" node_paths=PackedStringArray("gameOverMenu")]
+[node name="Cristian" type="Node3D"]
 script = ExtResource("1_jsmin")
-gameOverMenu = NodePath("GameOverMenu")
-
-[node name="GameOverMenu" parent="." instance=ExtResource("2_7knyn")]
-layer = 10
-visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)

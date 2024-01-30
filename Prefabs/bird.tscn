@@ -1,9 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cka4heni3dqxn"]
 
-[ext_resource type="Script" path="res://Scripts/bird.gd" id="1_5a6ki"]
+[ext_resource type="Script" path="res://Scripts/entities/bird.gd" id="1_5a6ki"]
 [ext_resource type="PackedScene" uid="uid://cq8e04rbyjl0j" path="res://Art/Models/bird.glb" id="1_26lmq"]
 
-[node name="Bird" type="Node3D"]
+[node name="bird" instance=ExtResource("1_26lmq")]
 script = ExtResource("1_5a6ki")
 
-[node name="bird" parent="." instance=ExtResource("1_26lmq")]
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/3/rotation = Quaternion(0.157965, 5.88561e-07, 9.41542e-08, 0.987445)
+bones/5/rotation = Quaternion(4.95035e-08, -1.99509e-06, 0.137929, 0.990442)
+bones/6/rotation = Quaternion(-0.563317, -0.41446, -0.423594, 0.57573)
+bones/7/rotation = Quaternion(2.53812e-07, -1.71631e-07, -0.137929, 0.990442)
+bones/8/rotation = Quaternion(0.993493, 1.35771e-08, -1.18434e-07, -0.113893)
+bones/9/rotation = Quaternion(0.993493, 1.35771e-08, -1.18434e-07, -0.113893)
