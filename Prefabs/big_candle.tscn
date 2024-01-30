@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1vxs7he8iws1"]
+
+[ext_resource type="PackedScene" uid="uid://bmejbh567cap8" path="res://Art/Models/big_candle.glb" id="1_posyc"]
+
+[node name="BigCandle" type="Node3D"]
+
+[node name="big_candle" parent="." instance=ExtResource("1_posyc")]
