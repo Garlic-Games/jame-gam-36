@@ -11,6 +11,10 @@ var timer_heat_decay = 0.0;
 var is_alive = true;
 
 
+func _ready():
+	$AnimationPlayer.play("fly");
+
+
 func _process(delta):
 	if is_alive:
 		timer_heat_decay += delta;
