@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://cka4heni3dqxn"]
+[gd_scene load_steps=2 format=3 uid="uid://cka4heni3dqxn"]
+
+[ext_resource type="PackedScene" uid="uid://cq8e04rbyjl0j" path="res://Art/Models/bird.glb" id="1_26lmq"]
 
 [node name="Bird" type="Node3D"]
+
+[node name="bird" parent="." instance=ExtResource("1_26lmq")]
