@@ -14,7 +14,6 @@ func _ready():
 
 
 func _process(delta):
-	add_heat(2)
 	if (current_heat >= max_heat):
 		gameplay_manager.EndGame();
 

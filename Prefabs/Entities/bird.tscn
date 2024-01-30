@@ -1,15 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://cka4heni3dqxn"]
+[gd_scene load_steps=6 format=3 uid="uid://cka4heni3dqxn"]
 
 [ext_resource type="Script" path="res://Scripts/entities/bird.gd" id="1_5a6ki"]
 [ext_resource type="PackedScene" uid="uid://cq8e04rbyjl0j" path="res://Art/Models/bird.glb" id="1_26lmq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m15lm"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fi22a"]
+bg_color = Color(1, 0.356863, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_c75oq"]
+viewport_path = NodePath("SubViewport")
 
 [node name="bird" instance=ExtResource("1_26lmq")]
 script = ExtResource("1_5a6ki")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
+bones/2/rotation = Quaternion(-0.0556098, 0, 0, 0.998453)
+bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.157965, 5.88561e-07, 9.41542e-08, 0.987445)
 bones/5/rotation = Quaternion(4.95035e-08, -1.99509e-06, 0.137929, 0.990442)
 bones/6/rotation = Quaternion(-0.563317, -0.41446, -0.423594, 0.57573)
+bones/6/scale = Vector3(1, 1, 1)
 bones/7/rotation = Quaternion(2.53812e-07, -1.71631e-07, -0.137929, 0.990442)
 bones/8/rotation = Quaternion(0.993493, 1.35771e-08, -1.18434e-07, -0.113893)
+bones/8/scale = Vector3(1, 1, 1.00001)
 bones/9/rotation = Quaternion(0.993493, 1.35771e-08, -1.18434e-07, -0.113893)
+bones/9/scale = Vector3(1, 1, 1.00001)
+
+[node name="SubViewport" type="SubViewport" parent="." index="2"]
+transparent_bg = true
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -13.5
+offset_right = 181.0
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_m15lm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fi22a")
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="3"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.243908, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("ViewportTexture_c75oq")
