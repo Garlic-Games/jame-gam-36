@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cftvn8lgajvv4"]
+
+[ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_7fygi"]
+[ext_resource type="PackedScene" uid="uid://cstwwhxy36qli" path="res://Prefabs/Player/player.tscn" id="2_4tcgb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c7xwj"]
+size = Vector3(30, 0.5, 30)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c8toj"]
+size = Vector2(30, 30)
+
+[sub_resource type="Environment" id="Environment_ujn0e"]
+
+[node name="Tomeu" type="Node3D" node_paths=PackedStringArray("gameOverMenu")]
+script = ExtResource("1_7fygi")
+gameOverMenu = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_c7xwj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_c8toj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ujn0e")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.688836, 0.724918, 0, -0.724918, 0.688836, 0, 3.30005, 12.259)
+
+[node name="Player" parent="." instance=ExtResource("2_4tcgb")]
