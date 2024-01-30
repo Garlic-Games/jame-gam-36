@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnl4dfk6hg1sg"]
+
+[ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_n5lw0"]
+[ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_1uyik"]
+
+[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("gameOverMenu")]
+script = ExtResource("1_n5lw0")
+gameOverMenu = NodePath("GameOverMenu")
+
+[node name="GameOverMenu" parent="." instance=ExtResource("2_1uyik")]
+layer = 10
+visible = false
+
+[node name="Temp" type="CanvasLayer" parent="."]
+
+[node name="EndGame" type="Button" parent="Temp"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "End Game"
+
+[connection signal="restartGame" from="GameOverMenu" to="." method="Restart"]
+[connection signal="pressed" from="Temp/EndGame" to="." method="EndGame"]

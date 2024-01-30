@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjssovxl7m1cw"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu/MainMenuManager.gd" id="1_16dku"]
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_16dku")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartGame" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "StartGame"
+
+[connection signal="pressed" from="CanvasLayer/StartGame" to="." method="StartGame"]

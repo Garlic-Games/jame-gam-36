@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://54n1o7mxvcbk"]
+
+[ext_resource type="Script" path="res://Scripts/Gameplay/GameOverManager.gd" id="1_gf200"]
+
+[node name="GameOverMenu" type="CanvasLayer"]
+script = ExtResource("1_gf200")
+
+[node name="Restart" type="Button" parent="."]
+process_mode = 2
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Restart"
+
+[connection signal="pressed" from="Restart" to="." method="RestartGamePressed"]
