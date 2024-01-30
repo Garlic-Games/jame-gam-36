@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cstwwhxy36qli"]
+[gd_scene load_steps=6 format=3 uid="uid://cstwwhxy36qli"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_sby1o"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="2_deoer"]
+[ext_resource type="Script" path="res://Scripts/Player/MouseCaptureInput.gd" id="3_g3i40"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1j2vr"]
 
@@ -17,3 +19,8 @@ shape = SubResource("CapsuleShape3D_1j2vr")
 mesh = SubResource("CapsuleMesh_3pajm")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
+script = ExtResource("2_deoer")
+mouse_sensitivity = 0.3
+
+[node name="MouseCaptureInput" type="Node" parent="."]
+script = ExtResource("3_g3i40")

@@ -11,9 +11,8 @@ size = Vector2(30, 30)
 
 [sub_resource type="Environment" id="Environment_ujn0e"]
 
-[node name="Tomeu" type="Node3D" node_paths=PackedStringArray("gameOverMenu")]
+[node name="Tomeu" type="Node3D"]
 script = ExtResource("1_7fygi")
-gameOverMenu = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

@@ -4,6 +4,9 @@ extends CharacterBody3D
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var speed: float = 5;
 
+func _init():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
+
 func _physics_process(delta):
 	# Add the gravity.
 	apply_gravity(gravity * delta);

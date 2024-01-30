@@ -9,7 +9,6 @@ func _ready():
 func EndGame():
 	GameStateMachine.changeState(GameStateMachine.GAME_STATE.GAME_OVER);
 
-
 func Restart():
 	GameStateMachine.changeState(GameStateMachine.GAME_STATE.PLAYING);
 
