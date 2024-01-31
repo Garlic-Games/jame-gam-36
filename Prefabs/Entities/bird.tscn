@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cka4heni3dqxn"]
+[gd_scene load_steps=7 format=3 uid="uid://cka4heni3dqxn"]
 
 [ext_resource type="Script" path="res://Scripts/entities/bird.gd" id="1_5a6ki"]
 [ext_resource type="PackedScene" uid="uid://cq8e04rbyjl0j" path="res://Art/Models/bird.glb" id="1_26lmq"]
@@ -20,6 +20,10 @@ border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_c75oq"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4j6iy"]
+radius = 0.191776
+height = 1.37754
 
 [node name="bird" instance=ExtResource("1_26lmq")]
 script = ExtResource("1_5a6ki")
@@ -64,3 +68,9 @@ billboard = 1
 no_depth_test = true
 fixed_size = true
 texture = SubResource("ViewportTexture_c75oq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="4" groups=["bird"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00309634, 0.0040853, 0.0867916)
+shape = SubResource("CapsuleShape3D_4j6iy")
