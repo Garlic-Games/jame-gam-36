@@ -3,7 +3,7 @@ extends Node
 signal on_bird_heat_changed;
 
 @export var max_fire_units : int = 100;
-@export var heat_decay : int = 2;
+@export var heat_decay : int = 5;
 @export var heat_decay_period : float = 1.0;
 @export var time_to_start_cooling : float = 2.0;
 @export var animation_max_speed : float = 12.0;

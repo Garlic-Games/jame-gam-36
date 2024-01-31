@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cstwwhxy36qli"]
+[gd_scene load_steps=9 format=3 uid="uid://cstwwhxy36qli"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_sby1o"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="2_deoer"]
 [ext_resource type="PackedScene" uid="uid://u7xsqi6rendp" path="res://Prefabs/Player/shotgun.tscn" id="3_736fj"]
 [ext_resource type="Script" path="res://Scripts/Player/MouseCaptureInput.gd" id="3_g3i40"]
+[ext_resource type="PackedScene" uid="uid://6jy20ax5x384" path="res://Prefabs/Player/raygun.tscn" id="4_p3pfc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1j2vr"]
 
@@ -16,6 +17,7 @@ height = 0.1
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1759, 0)
 script = ExtResource("1_sby1o")
+weapon = 1
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_1j2vr")
@@ -37,6 +39,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -10)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCamera/GunTarget"]
 mesh = SubResource("SphereMesh_4y6ww")
+
+[node name="Raygun" parent="PlayerCamera" instance=ExtResource("4_p3pfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.543629, -0.593098, -0.669781)
 
 [node name="MouseCaptureInput" type="Node" parent="."]
 script = ExtResource("3_g3i40")

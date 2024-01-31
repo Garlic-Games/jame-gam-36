@@ -1,6 +1,6 @@
 extends Node3D
 
-@export_group("Gun settings")
+@export_group("Weapon settings")
 @export var ray_distance : float = 50.0;
 @export var fire_units_per_tick : int = 1;
 @export var time_between_ticks : float = 0.1;
@@ -25,7 +25,7 @@ func _process(delta):
 
 
 func detect_entity_in_sight() -> void:
-	var ray = PhysicsRayQueryParameters3D.create($PlayerCamera.global_position, $PlayerCamera.global_position - $PlayerCamera.global_transform.basis.z * ray_distance);
+	var ray = PhysicsRayQueryParameters3D.create(get_parent().global_position, get_parent().global_position - get_parent().global_transform.basis.z * ray_distance);
 	var collision = get_world_3d().direct_space_state.intersect_ray(ray);
 	
 	if collision:
