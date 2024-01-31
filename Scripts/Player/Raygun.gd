@@ -1,4 +1,5 @@
 extends Node3D
+class_name Raygun;
 
 @export_group("Weapon settings")
 @export var ray_distance : float = 50.0;
@@ -7,8 +8,12 @@ extends Node3D
 
 var is_firing : bool = false;
 var timer_gun : float = 0.0;
+var is_active = true;
 
 func _input(event):
+	if !is_active:
+		return;
+		
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed("fire"):
 			is_firing = true;
@@ -17,6 +22,9 @@ func _input(event):
 
 
 func _process(delta):
+	if !is_active:
+		return;
+		
 	timer_gun += delta;
 	
 	if is_firing and timer_gun >= time_between_ticks:
@@ -31,3 +39,11 @@ func detect_entity_in_sight() -> void:
 	if collision:
 		if collision.collider.is_in_group("bird"):
 			collision.collider.get_parent().add_fire(fire_units_per_tick);
+
+func activate():
+	show();
+	is_active = true;
+	
+func deactivate():
+	hide();
+	is_active = false;

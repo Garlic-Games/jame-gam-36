@@ -1,27 +1,16 @@
 extends CharacterBody3D
 
-enum Weapon {
-	SHOTGUN,
-	RAYGUN,
-}
-
 @export_group("Player settings")
 @export var speed: float = 5.0;
 @export var jump_speed: float = 5.0;
 @export var sensitivity : float = 2.0;
-@export var weapon : Weapon = Weapon.SHOTGUN;
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 
-
-func _ready():
+func _ready():#TODO Remove this as soon as we can
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
-	match weapon:
-		Weapon.SHOTGUN:
-			$PlayerCamera/Raygun.queue_free();
-		Weapon.RAYGUN:
-			$PlayerCamera/Shotgun.queue_free();
 
 
 func _physics_process(delta):

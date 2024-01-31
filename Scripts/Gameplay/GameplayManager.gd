@@ -17,3 +17,4 @@ func onGameStateChange(state, oldState):
 		gameOverMenu.show();
 	else:
 		gameOverMenu.hide();
+

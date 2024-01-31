@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://6jy20ax5x384"]
+[gd_scene load_steps=3 format=3 uid="uid://dpjl55132kkv1"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Raygun.gd" id="1_466us"]
 
