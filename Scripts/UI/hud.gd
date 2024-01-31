@@ -9,5 +9,9 @@ func _ready():
 	heat.connect("on_heat_changed", func(val): $Heat.value = val);
 	raygun.connect("on_ammo_changed", func(val): $Ammo.value = val);
 
+	$Heat.max_value = heat.max_heat;
+	$Heat.value = heat.current_heat;
 	$Ammo.max_value = raygun.max_ammo;
+	$Ammo.value = raygun.current_ammo;
 
+	print(raygun.current_ammo)

@@ -18,7 +18,7 @@ var is_active = true;
 func _input(event):
 	if !is_active:
 		return;
-		
+
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed("fire"):
 			is_firing = true;
@@ -26,7 +26,7 @@ func _input(event):
 			is_firing = false;
 
 
-func _ready():
+func _init():
 	current_ammo = starting_ammo;
 
 
