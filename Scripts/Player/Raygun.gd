@@ -49,7 +49,15 @@ func shoot():
 	detect_entity_in_sight();
 	current_ammo -= 1;
 	on_ammo_changed.emit(current_ammo);
-	print(current_ammo)
+
+
+func recharge_ammo(fire_units : int):
+	if current_ammo >= max_ammo:
+		return;
+	
+	current_ammo = min(current_ammo + fire_units, max_ammo);
+	on_ammo_changed.emit(current_ammo);
+
 
 func detect_entity_in_sight():
 	var ray = PhysicsRayQueryParameters3D.create(get_parent().global_position, get_parent().global_position - get_parent().global_transform.basis.z * ray_distance);

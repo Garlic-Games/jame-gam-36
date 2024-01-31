@@ -13,5 +13,3 @@ func _ready():
 	$Heat.value = heat.current_heat;
 	$Ammo.max_value = raygun.max_ammo;
 	$Ammo.value = raygun.current_ammo;
-
-	print(raygun.current_ammo)

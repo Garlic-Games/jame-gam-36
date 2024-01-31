@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://3rr7rimn2jn7"]
+
+[ext_resource type="PackedScene" uid="uid://dipbu4ku1tjo6" path="res://Art/Models/moai.glb" id="2_om5ou"]
+
+[sub_resource type="GDScript" id="GDScript_55auy"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k4kou"]
+radius = 0.961936
+height = 3.0934
+
+[node name="Moai" type="Node3D"]
+script = SubResource("GDScript_55auy")
+
+[node name="moai" parent="." instance=ExtResource("2_om5ou")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["moai"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301303, 0, 0.1718)
+shape = SubResource("CapsuleShape3D_k4kou")
