@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://cstwwhxy36qli"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_sby1o"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="2_deoer"]
+[ext_resource type="PackedScene" uid="uid://u7xsqi6rendp" path="res://Prefabs/Player/shotgun.tscn" id="3_736fj"]
+[ext_resource type="Script" path="res://Scripts/Player/MouseCaptureInput.gd" id="3_g3i40"]
+[ext_resource type="PackedScene" uid="uid://bdnl853o6t7g4" path="res://Prefabs/Player/hook.tscn" id="4_cpwxe"]
+[ext_resource type="PackedScene" uid="uid://dpjl55132kkv1" path="res://Prefabs/Player/raygun.tscn" id="4_p3pfc"]
+[ext_resource type="Script" path="res://Scripts/Player/WeaponChange.gd" id="7_kbkmc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1j2vr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3pajm"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1759, 0)
+collision_layer = 2
+script = ExtResource("1_sby1o")
+
+[node name="PlayerCollider" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_1j2vr")
+
+[node name="PlayerShape" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3pajm")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902616, -0.468709)
+current = true
+script = ExtResource("2_deoer")
+mouse_sensitivity = 0.3
+
+[node name="Shotgun" parent="PlayerCamera" node_paths=PackedStringArray("forward") instance=ExtResource("3_736fj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.544, -0.6, -0.67)
+forward = NodePath("../GunTarget")
+bullet_speed = 0.5
+
+[node name="Hook" parent="PlayerCamera" node_paths=PackedStringArray("hook_target", "hook_holder") instance=ExtResource("4_cpwxe")]
+hook_speed = 20.0
+hook_treshold = 1.0
+hook_target = NodePath("../GunTarget")
+hook_holder = NodePath("../..")
+
+[node name="Raygun" parent="PlayerCamera" instance=ExtResource("4_p3pfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.544, -0.6, -0.67)
+
+[node name="GunTarget" type="Node3D" parent="PlayerCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -10)
+
+[node name="MouseCaptureInput" type="Node" parent="."]
+script = ExtResource("3_g3i40")
+
+[node name="WeaponChange" type="Node" parent="." node_paths=PackedStringArray("shotgun", "raygun")]
+script = ExtResource("7_kbkmc")
+shotgun = NodePath("../PlayerCamera/Shotgun")
+raygun = NodePath("../PlayerCamera/Raygun")
+animation_duration = 0.5

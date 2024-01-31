@@ -6,6 +6,7 @@ signal on_ammo_changed;
 @export_group("Weapon settings")
 @export var max_ammo : int = 150;
 @export var starting_ammo : int = 100;
+@export var ammo_recharged_per_hit : int = 3;
 @export var ray_distance : float = 50.0;
 @export var fire_units_per_tick : int = 1;
 @export var time_between_ticks : float = 0.1;
@@ -51,11 +52,11 @@ func shoot():
 	on_ammo_changed.emit(current_ammo);
 
 
-func recharge_ammo(fire_units : int):
+func recharge_ammo():
 	if current_ammo >= max_ammo:
 		return;
-	
-	current_ammo = min(current_ammo + fire_units, max_ammo);
+
+	current_ammo = min(current_ammo + ammo_recharged_per_hit, max_ammo);
 	on_ammo_changed.emit(current_ammo);
 
 
@@ -66,6 +67,7 @@ func detect_entity_in_sight():
 	if collision:
 		if collision.collider.is_in_group("bird"):
 			collision.collider.get_parent().add_fire(fire_units_per_tick);
+
 
 func activate():
 	show();
