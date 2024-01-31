@@ -5,17 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://u7xsqi6rendp" path="res://Prefabs/Player/shotgun.tscn" id="3_736fj"]
 [ext_resource type="Script" path="res://Scripts/Player/MouseCaptureInput.gd" id="3_g3i40"]
 [ext_resource type="PackedScene" uid="uid://6jy20ax5x384" path="res://Prefabs/Player/raygun.tscn" id="4_p3pfc"]
+[ext_resource type="PackedScene" uid="uid://bdnl853o6t7g4" path="res://Prefabs/Player/hook.tscn" id="4_cpwxe"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1j2vr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3pajm"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_4y6ww"]
-radius = 0.1
-height = 0.1
-
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1759, 0)
+collision_layer = 2
 script = ExtResource("1_sby1o")
 weapon = 1
 
@@ -34,11 +32,14 @@ mouse_sensitivity = 0.3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.543629, -0.593098, -0.669781)
 forward = NodePath("../GunTarget")
 
+[node name="Hook" parent="PlayerCamera" node_paths=PackedStringArray("hook_target", "hook_holder") instance=ExtResource("4_cpwxe")]
+hook_speed = 8.0
+hook_treshold = 1.0
+hook_target = NodePath("../GunTarget")
+hook_holder = NodePath("../..")
+
 [node name="GunTarget" type="Node3D" parent="PlayerCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -10)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerCamera/GunTarget"]
-mesh = SubResource("SphereMesh_4y6ww")
 
 [node name="Raygun" parent="PlayerCamera" instance=ExtResource("4_p3pfc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.543629, -0.593098, -0.669781)
