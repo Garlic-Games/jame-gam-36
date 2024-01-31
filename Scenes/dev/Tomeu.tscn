@@ -33,6 +33,7 @@ environment = SubResource("Environment_ujn0e")
 transform = Transform3D(1, 0, 0, 0, 0.688836, 0.724918, 0, -0.724918, 0.688836, 0, 3.30005, 12.259)
 
 [node name="Player" parent="." instance=ExtResource("2_4tcgb")]
+weapon = 0
 
 [node name="Hookable3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.34828, 7.10632, 10.7091)

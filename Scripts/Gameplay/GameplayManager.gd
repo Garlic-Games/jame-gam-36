@@ -3,7 +3,7 @@ class_name GameplayManager;
 
 @export var gameOverMenu: GameOverManager;
 
-func _ready():
+func _ready():	
 	GameStateMachine.connect("stateChange", onGameStateChange);
 
 func EndGame():

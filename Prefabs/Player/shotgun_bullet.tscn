@@ -10,8 +10,8 @@ emission_shape_scale = Vector3(0.5, 0.5, 0.5)
 emission_shape = 3
 emission_box_extents = Vector3(0.1, 0.1, 0.1)
 direction = Vector3(0, 0, 0)
-radial_velocity_min = 0.08
-radial_velocity_max = 0.18
+radial_velocity_min = 0.5
+radial_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_hd4pg"]
@@ -27,8 +27,10 @@ script = ExtResource("1_u6ay1")
 shape = SubResource("BoxShape3D_1mhtm")
 
 [node name="BulletSprite" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 50
 lifetime = 2.0
+one_shot = true
 explosiveness = 1.0
 visibility_aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
 local_coords = true

@@ -11,7 +11,8 @@ func _input(event):
 		shoot();
 
 func shoot():
-	var instance = bullet.instantiate(); #unpacks the scene that is loaded in the preload function
-	$"/root/".add_child(instance); #adds child to the 3d world
-	instance.global_position = bulletHole.global_position; #set whatever position you need
-	instance.velocity = (forward.global_position - instance.global_position) * bullet_speed; #direction you want it to fire in
+	var instance = bullet.instantiate(); 
+	$"/root/".add_child(instance);
+	instance.global_position = bulletHole.global_position; 
+	instance.global_rotation = bulletHole.global_rotation;
+	instance.velocity = bulletHole.global_position.direction_to(forward.global_position) * bullet_speed; 

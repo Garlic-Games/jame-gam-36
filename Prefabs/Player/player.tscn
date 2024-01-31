@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://u7xsqi6rendp" path="res://Prefabs/Player/shotgun.tscn" id="3_736fj"]
 [ext_resource type="Script" path="res://Scripts/Player/MouseCaptureInput.gd" id="3_g3i40"]
 [ext_resource type="PackedScene" uid="uid://bdnl853o6t7g4" path="res://Prefabs/Player/hook.tscn" id="4_cpwxe"]
-[ext_resource type="PackedScene" uid="uid://6jy20ax5x384" path="res://Prefabs/Player/raygun.tscn" id="4_p3pfc"]
+[ext_resource type="PackedScene" path="res://Prefabs/Player/raygun.tscn" id="4_p3pfc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1j2vr"]
 
@@ -32,6 +32,7 @@ mouse_sensitivity = 0.3
 [node name="Shotgun" parent="PlayerCamera" node_paths=PackedStringArray("forward") instance=ExtResource("3_736fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.543629, -0.593098, -0.669781)
 forward = NodePath("../GunTarget")
+bullet_speed = 0.5
 
 [node name="Hook" parent="PlayerCamera" node_paths=PackedStringArray("hook_target", "hook_holder") instance=ExtResource("4_cpwxe")]
 hook_speed = 20.0
