@@ -54,10 +54,15 @@ transform = Transform3D(-0.547899, 0, -0.836544, 0, 1, 0, 0.836544, 0, -0.547899
 script = ExtResource("3_veuxn")
 
 [node name="Obstacle" parent="Obstacles" instance=ExtResource("3_n1cgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.55247)
 
 [node name="Obstacle2" parent="Obstacles" instance=ExtResource("3_n1cgf")]
+transform = Transform3D(0.0345158, 0, -0.999404, 0, 1, 0, 0.999404, 0, 0.0345158, 5.67071, 0, 3.54072)
+heat_threshold = 200
 
 [node name="Obstacle3" parent="Obstacles" instance=ExtResource("3_n1cgf")]
+transform = Transform3D(0.076371, 0, 0.997079, 0, 1, 0, -0.997079, 0, 0.076371, -8.54257, 0, 0)
+heat_threshold = 300
 
 [node name="UI" type="Node" parent="."]
 

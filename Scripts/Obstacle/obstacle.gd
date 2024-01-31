@@ -4,5 +4,4 @@ extends Node
 
 
 func disable():
-	print("Obstacle disabled");
-	pass;
+	self.queue_free();
