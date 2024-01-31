@@ -4,12 +4,20 @@ extends Node3D
 @export var rotation_speed: float = 2;
 @export var fire_treshold: float = 10;
 @export var bullet_speed: float = 2;
+@export var floating_amplitude : float = 0.25;
+@export var floating_period : float = 3.0;
+
 @onready var bullet: PackedScene = preload("res://Prefabs/Entities/moai_smoke.tscn");
 const PLAYER_MASK = 2;
 
+var initial_position_y : float;
+var timer_floating : float = 0.0;
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready():
+	initial_position_y = position.y;
+
+
 func _process(delta):
 	if !target:
 		return;
@@ -23,7 +31,15 @@ func _process(delta):
 	rotation.y = lerp_angle(rotation.y, next_rotation, delta * rotation_speed);
 	if abs(next_rotation - rotation.y) <= fire_treshold:
 		shoot(target);
-		
+
+	timer_floating += delta;
+
+	if timer_floating > floating_period:
+		timer_floating -= floating_period;
+
+	position.y = initial_position_y + floating_amplitude * sin(2.0 * PI / floating_period * timer_floating);
+
+
 func shoot(target):
 	var instance = bullet.instantiate(); 
 	$"/root/".add_child(instance);

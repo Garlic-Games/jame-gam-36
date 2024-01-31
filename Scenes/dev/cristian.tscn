@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4g5sigk7o8tn"]
+[gd_scene load_steps=15 format=3 uid="uid://b4g5sigk7o8tn"]
 
 [ext_resource type="Script" path="res://Scripts/mechanics/heat.gd" id="1_g6aql"]
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_jsmin"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/obstacle/obstacle_container.gd" id="3_veuxn"]
 [ext_resource type="PackedScene" uid="uid://cdu1thohecrr2" path="res://Prefabs/UI/hud.tscn" id="8_cugii"]
 [ext_resource type="PackedScene" uid="uid://cstwwhxy36qli" path="res://Prefabs/Player/player.tscn" id="8_lsx88"]
+[ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_1fs2k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3bpg7"]
 size = Vector3(30, 0.5, 30)
@@ -89,5 +90,9 @@ environment = SubResource("Environment_u18tx")
 
 [node name="Player" parent="." instance=ExtResource("8_lsx88")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0115761, 1.1759, -0.00186348)
+collision_mask = 17
+
+[node name="Moai" parent="." instance=ExtResource("9_1fs2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16802, 1.95171, 3.38527)
 
 [connection signal="on_heat_changed" from="Heat" to="Obstacles" method="_on_heat_on_heat_changed"]
