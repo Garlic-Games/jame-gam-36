@@ -133,6 +133,5 @@ environment = SubResource("Environment_u18tx")
 
 [node name="Player" parent="." instance=ExtResource("8_lsx88")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0115761, 1.1759, -0.00186348)
-weapon = 0
 
 [connection signal="on_heat_changed" from="Heat" to="Obstacles" method="_on_heat_on_heat_changed"]
