@@ -16,7 +16,8 @@ var timer_cooling = 0.0;
 
 func _ready():
 	$AnimationPlayer.play("fly");
-
+	var random_timestamp = randf_range(0.0, $AnimationPlayer.current_animation_length);
+	$AnimationPlayer.seek(random_timestamp);
 
 func _process(delta):
 	if is_alive:
