@@ -6,6 +6,7 @@ signal on_bird_heat_changed;
 @export var heat_decay : int = 2;
 @export var heat_decay_period : float = 1.0;
 @export var time_to_start_cooling : float = 2.0;
+@export var animation_max_speed : float = 12.0;
 
 var current_fire_units : int = 0;
 var is_alive = true;
@@ -16,8 +17,8 @@ var timer_cooling = 0.0;
 
 func _ready():
 	$AnimationPlayer.play("fly");
-	var random_timestamp = randf_range(0.0, $AnimationPlayer.current_animation_length);
-	$AnimationPlayer.seek(random_timestamp);
+	$AnimationPlayer.seek(randf_range(0.0, $AnimationPlayer.current_animation_length));
+
 
 func _process(delta):
 	if is_alive:
@@ -42,6 +43,8 @@ func add_fire(fire_units : int):
 		on_bird_heat_changed.emit(fire_units);
 		
 	$SubViewport/ProgressBar.value = current_fire_units;
+	
+	$AnimationPlayer.speed_scale = (animation_max_speed - 1.0) / max_fire_units * current_fire_units + 1.0;
 
 	timer_cooling = 0.0;
 
