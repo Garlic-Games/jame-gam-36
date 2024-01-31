@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://58tmf254ahyu"]
+
+[ext_resource type="PackedScene" uid="uid://csopvb7v1bnoe" path="res://Art/Models/male-body.glb" id="1_8kgd8"]
+
+[node name="male-body" instance=ExtResource("1_8kgd8")]
+
+[node name="Skeleton3D" parent="metarig" index="0"]
+bones/0/position = Vector3(0, 0.969142, -0.0552)
+bones/1/rotation = Quaternion(-0.027906, 0, 0, 0.999611)
+bones/2/rotation = Quaternion(0.0113634, 0, 0, 0.999935)
+bones/3/rotation = Quaternion(0.0589013, 0, 0, 0.998264)
+bones/5/rotation = Quaternion(-0.496238, 1.03496e-07, -5.91562e-08, 0.868187)
+bones/115/rotation = Quaternion(-0.459488, 0.643258, -0.397954, 0.465535)
+bones/116/rotation = Quaternion(0.430782, 0.251717, -0.0419061, 0.865626)
+bones/117/rotation = Quaternion(-0.0901705, -0.0174522, 0.136966, 0.986309)
+bones/138/rotation = Quaternion(-0.308705, -0.269939, 0.692813, 0.593164)
+bones/139/rotation = Quaternion(0.555305, -0.219682, 0.0402594, 0.801097)
+bones/140/rotation = Quaternion(-0.180031, 0.212331, -0.191409, 0.941205)
+bones/164/rotation = Quaternion(0.752799, -0.0160115, 0.00536706, 0.658034)
+bones/165/rotation = Quaternion(0.728867, -0.0106591, -0.00645347, 0.684542)
+bones/166/rotation = Quaternion(-0.547277, -0.0252826, -0.0442385, 0.835399)
+bones/169/rotation = Quaternion(0.997525, 0.0172814, -0.00124341, 0.0681421)
+bones/170/rotation = Quaternion(0.142859, 0.00320318, 0.0139179, 0.98964)
+bones/171/rotation = Quaternion(-0.657461, 0.0304229, 0.0397799, 0.751822)
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "run_001"
