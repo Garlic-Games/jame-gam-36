@@ -1,32 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://3rr7rimn2jn7"]
+[gd_scene load_steps=5 format=3 uid="uid://mal72xb6sgs2"]
 
+[ext_resource type="Script" path="res://Scripts/Entities/moai.gd" id="1_f68mh"]
 [ext_resource type="PackedScene" uid="uid://dipbu4ku1tjo6" path="res://Art/Models/moai.glb" id="2_om5ou"]
-
-[sub_resource type="GDScript" id="GDScript_55auy"]
-script/source = "extends Node
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k4kou"]
 radius = 0.961936
 height = 3.0934
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ja7wn"]
+height = 5.0
+radius = 10.0
+
 [node name="Moai" type="Node3D"]
-script = SubResource("GDScript_55auy")
+script = ExtResource("1_f68mh")
 
 [node name="moai" parent="." instance=ExtResource("2_om5ou")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["moai"]]
+collision_layer = 48
+collision_mask = 14
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301303, 0, 0.1718)
 shape = SubResource("CapsuleShape3D_k4kou")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D" groups=["moai"]]
+collision_layer = 48
+collision_mask = 14
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301303, 0, 0.1718)
+shape = SubResource("CapsuleShape3D_k4kou")
+
+[node name="SightArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="SightShape" type="CollisionShape3D" parent="SightArea"]
+shape = SubResource("CylinderShape3D_ja7wn")
+
+[connection signal="body_entered" from="SightArea" to="." method="_on_sight_area_body_entered"]
+[connection signal="body_exited" from="SightArea" to="." method="_on_sight_area_body_exited"]

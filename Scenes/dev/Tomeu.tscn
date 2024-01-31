@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cftvn8lgajvv4"]
+[gd_scene load_steps=10 format=3 uid="uid://cftvn8lgajvv4"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_7fygi"]
 [ext_resource type="PackedScene" uid="uid://cstwwhxy36qli" path="res://Prefabs/Player/player.tscn" id="2_4tcgb"]
 [ext_resource type="PackedScene" uid="uid://ctuogdlqakgo4" path="res://Prefabs/Portal/portal.tscn" id="3_454me"]
+[ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="4_4pfvb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c7xwj"]
 size = Vector3(30, 0.5, 30)
@@ -79,3 +80,8 @@ exit = NodePath("../Portal2")
 [node name="Portal2" parent="." node_paths=PackedStringArray("exit") instance=ExtResource("3_454me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.79283, 1.59998, -13.9227)
 exit = NodePath("../Portal")
+
+[node name="Moai" parent="." instance=ExtResource("4_4pfvb")]
+transform = Transform3D(0.716351, 0, -0.69774, 0, 1, 0, 0.69774, 0, 0.716351, -8.17692, 3.29931, -9.2211)
+fire_treshold = 100.0
+bullet_speed = 0.01
