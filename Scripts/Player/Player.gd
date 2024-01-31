@@ -7,6 +7,7 @@ enum Weapon {
 
 @export_group("Player settings")
 @export var speed: float = 5.0;
+@export var jump_speed: float = 5.0;
 @export var sensitivity : float = 2.0;
 @export var weapon : Weapon = Weapon.SHOTGUN;
 
@@ -26,6 +27,9 @@ func _ready():
 func _physics_process(delta):
 	# Add the gravity.
 	apply_gravity(gravity * delta);
+	if is_on_floor() && Input.is_action_just_pressed("jump"):
+		velocity.y = jump_speed;
+	
 	var direction = get_direction();
 	apply_velocity(direction);
 	move_and_slide();
