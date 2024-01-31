@@ -53,3 +53,4 @@ script = ExtResource("3_g3i40")
 script = ExtResource("7_kbkmc")
 shotgun = NodePath("../PlayerCamera/Shotgun")
 raygun = NodePath("../PlayerCamera/Raygun")
+animation_duration = 0.5
