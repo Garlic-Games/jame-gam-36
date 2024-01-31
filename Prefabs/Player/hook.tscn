@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdnl853o6t7g4"]
+[gd_scene load_steps=3 format=3 uid="uid://bdnl853o6t7g4"]
 
 [ext_resource type="Script" path="res://Scripts/Player/hook.gd" id="1_q810k"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_5vrfm"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 0.2
-radial_segments = 4
-rings = 1
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rfeap"]
 radius = 0.05
@@ -17,17 +10,6 @@ rings = 1
 
 [node name="Hook" type="Node3D"]
 script = ExtResource("1_q810k")
-
-[node name="HookPoint" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.094222)
-target_position = Vector3(0, 0, 1)
-collision_mask = 48
-hit_from_inside = true
-
-[node name="HookPointImage" type="MeshInstance3D" parent="HookPoint"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.458839)
-mesh = SubResource("CylinderMesh_5vrfm")
-skeleton = NodePath("../..")
 
 [node name="Rope" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_rfeap")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgq2dnp05p3sk"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5vrfm"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.2
+radial_segments = 4
+rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ohyn"]
+
+[node name="HookPoint" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.094222)
+collision_layer = 4
+collision_mask = 48
+
+[node name="HookPointImage" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.458839)
+mesh = SubResource("CylinderMesh_5vrfm")
+skeleton = NodePath("../..")
+
+[node name="HookCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8ohyn")

@@ -14,11 +14,8 @@ enum Weapon {
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 
 
-func _init():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
-
-
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
 	match weapon:
 		Weapon.SHOTGUN:
 			$PlayerCamera/Raygun.queue_free();

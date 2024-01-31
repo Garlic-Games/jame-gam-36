@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="2_deoer"]
 [ext_resource type="PackedScene" uid="uid://u7xsqi6rendp" path="res://Prefabs/Player/shotgun.tscn" id="3_736fj"]
 [ext_resource type="Script" path="res://Scripts/Player/MouseCaptureInput.gd" id="3_g3i40"]
-[ext_resource type="PackedScene" uid="uid://6jy20ax5x384" path="res://Prefabs/Player/raygun.tscn" id="4_p3pfc"]
 [ext_resource type="PackedScene" uid="uid://bdnl853o6t7g4" path="res://Prefabs/Player/hook.tscn" id="4_cpwxe"]
+[ext_resource type="PackedScene" uid="uid://6jy20ax5x384" path="res://Prefabs/Player/raygun.tscn" id="4_p3pfc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1j2vr"]
 
@@ -25,6 +25,7 @@ mesh = SubResource("CapsuleMesh_3pajm")
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902616, -0.468709)
+current = true
 script = ExtResource("2_deoer")
 mouse_sensitivity = 0.3
 
@@ -33,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.543629, -0.593098, -0.66978
 forward = NodePath("../GunTarget")
 
 [node name="Hook" parent="PlayerCamera" node_paths=PackedStringArray("hook_target", "hook_holder") instance=ExtResource("4_cpwxe")]
-hook_speed = 8.0
+hook_speed = 20.0
 hook_treshold = 1.0
 hook_target = NodePath("../GunTarget")
 hook_holder = NodePath("../..")
