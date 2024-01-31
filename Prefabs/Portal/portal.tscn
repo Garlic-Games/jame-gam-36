@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctuogdlqakgo4"]
+
+[ext_resource type="Script" path="res://Scripts/Portal/Portal.gd" id="1_4ye3b"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uln8q"]
+size = Vector2(1.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eu66s"]
+size = Vector3(1.5, 3, 0.5)
+
+[node name="Portal" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59998, -13.9227)
+script = ExtResource("1_4ye3b")
+
+[node name="PortalShape" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_uln8q")
+
+[node name="PortalInteractionArea" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="PortalInteractionAreaCollider" type="CollisionShape3D" parent="PortalInteractionArea"]
+shape = SubResource("BoxShape3D_eu66s")
+
+[connection signal="body_entered" from="PortalInteractionArea" to="." method="_on_portal_entered"]
+[connection signal="body_exited" from="PortalInteractionArea" to="." method="_on_portal_exited"]
