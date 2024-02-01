@@ -1,6 +1,8 @@
+class_name MoaiSmoke
 extends CharacterBody3D
 
-signal on_player_bullet_collision;
+signal on_moai_bullet_collided;
+var impulse_strength: float = 10;
 
 @onready var particle: GPUParticles3D = $BulletSprite;
 
@@ -12,12 +14,13 @@ func _physics_process(_delta):
 	var collision = move_and_collide(velocity);
 
 	if collision:
-		if collision.get_collider().is_in_group("moai"):
-			on_player_bullet_collision.emit();
+		var collider = collision.get_collider();
+		if collider.is_in_group("Player"):
+			collider.velocity += velocity.normalized() * impulse_strength;
 			
+		on_moai_bullet_collided.emit();
 		print("bullet collided");
 		queue_free();
-
 
 func _on_bullet_sprite_finished():
 	queue_free();

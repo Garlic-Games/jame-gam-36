@@ -16,7 +16,6 @@ script = ExtResource("1_f68mh")
 bullet_speed = 4.0
 
 [node name="moai" parent="." instance=ExtResource("2_om5ou")]
-transform = Transform3D(0.640713, 0, -0.76778, 0, 1, 0, 0.76778, 0, 0.640713, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." groups=["moai"]]
 collision_layer = 48

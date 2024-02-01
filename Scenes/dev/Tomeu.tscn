@@ -97,6 +97,7 @@ exit = NodePath("../Portal")
 
 [node name="Moai" parent="." instance=ExtResource("4_4pfvb")]
 transform = Transform3D(0.716351, 0, -0.69774, 0, 1, 0, 0.69774, 0, 0.716351, -8.17692, 3.29931, -9.2211)
-rotation_speed = 0.5
-shoot_treshold = 0.2
+rotation_speed = 0.8
+shoot_treshold = 0.0
 bullet_speed = 0.5
+impulse_strenght = 80.0

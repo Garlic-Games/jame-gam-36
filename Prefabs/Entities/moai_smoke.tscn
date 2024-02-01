@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://xo0raqdao0hp"]
 
-[ext_resource type="Script" path="res://Scripts/Player/ShotgunBullet.gd" id="1_wo5ee"]
+[ext_resource type="Script" path="res://Scripts/Entities/moaiBullet.gd" id="1_ke0xb"]
 [ext_resource type="Texture2D" uid="uid://r4lymwruag3j" path="res://Art/Textures/smoke_particle/whitePuff00.png" id="2_8n0dw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1mhtm"]
@@ -18,7 +18,7 @@ curve = SubResource("Curve_pqkc8")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdfwe"]
 emission_shape_scale = Vector3(0.5, 0.5, 0.5)
 emission_shape = 3
-emission_box_extents = Vector3(0.1, 0.1, 0.1)
+emission_box_extents = Vector3(0.2, 0.2, 0.2)
 direction = Vector3(0, 0, 0)
 angular_velocity_min = 0.1
 angular_velocity_max = 0.1
@@ -47,7 +47,7 @@ material = SubResource("StandardMaterial3D_5e2cj")
 collision_layer = 16
 collision_mask = 3
 motion_mode = 1
-script = ExtResource("1_wo5ee")
+script = ExtResource("1_ke0xb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_1mhtm")

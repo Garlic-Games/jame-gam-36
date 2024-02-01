@@ -23,8 +23,8 @@ func _physics_process(delta):
 
 func apply_velocity(direction: Vector3) -> void:
 	if direction:
-		velocity.x = direction.x * speed;
-		velocity.z = direction.z * speed;
+		velocity.x = move_toward(velocity.x, direction.x * speed, speed);
+		velocity.z = move_toward(velocity.z,  direction.z * speed, speed);
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed);
 		velocity.z = move_toward(velocity.z, 0, speed);

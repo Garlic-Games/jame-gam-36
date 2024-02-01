@@ -12,6 +12,7 @@ extends Node3D
 @export var shoot_treshold: float = 0.1;
 @export var bullet_speed: float = 2;
 @export var shoot_period : float = 3.0;
+@export var impulse_strenght : float = 10.0;
 
 @onready var bullet: PackedScene = preload("res://Prefabs/Entities/moai_smoke.tscn");
 const FLOOR_MASK = 1; # also the floor mask
@@ -27,15 +28,15 @@ var timer_shoot: float = shoot_period;
 signal bullet_shot;
 
 func _ready():
-	for obstacle in obstacles.get_children():
-		obstacle.connect("on_obstacle_cleared", go_next_waypoint);
-		
-	for waypoint in waypoints.get_children():
-		positions.append(waypoint.position);
+	if obstacles && waypoints:
+		for obstacle in obstacles.get_children():
+			obstacle.connect("on_obstacle_cleared", go_next_waypoint);
+		for waypoint in waypoints.get_children():
+			positions.append(waypoint.position);
 
-	waypoint_index = 0;
-		
-	position = positions[0];
+		waypoint_index = 0;
+			
+		position = positions[0];
 	initial_position_y = position.y;
 
 
@@ -54,7 +55,7 @@ func _process(delta):
 			shoot(target);
 
 func check_if_facing(target: Vector3, threshold: float) -> bool: 
-	var dir = global_position.normalized().direction_to(target.normalized());
+	var dir = global_position.direction_to(target);
 	var product = dir.dot(basis.z.normalized());
 	return  product > threshold;
 
@@ -75,11 +76,12 @@ func float_animation(delta: float) -> void:
 	position.y = initial_position_y + floating_amplitude * sin(2.0 * PI / floating_period * timer_floating);
 
 func shoot(current_target):
-	var instance = bullet.instantiate(); 
+	var instance = bullet.instantiate() as MoaiSmoke; 
 	$"/root/".add_child(instance);
 	instance.global_position = global_position; 
 	instance.global_rotation = global_rotation;
 	instance.velocity = global_position.direction_to(current_target.global_position) * bullet_speed; 
+	instance.impulse_strength = impulse_strenght;
 	bullet_shot.emit();
 
 
