@@ -13,6 +13,7 @@ radius = 30.0
 
 [node name="Moai" type="Node3D"]
 script = ExtResource("1_f68mh")
+bullet_speed = 4.0
 
 [node name="moai" parent="." instance=ExtResource("2_om5ou")]
 transform = Transform3D(0.640713, 0, -0.76778, 0, 1, 0, 0.76778, 0, 0.640713, 0, 0, 0)
@@ -22,14 +23,6 @@ collision_layer = 48
 collision_mask = 14
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301303, 0, 0.1718)
-shape = SubResource("CapsuleShape3D_k4kou")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D" groups=["moai"]]
-collision_layer = 48
-collision_mask = 14
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301303, 0, 0.1718)
 shape = SubResource("CapsuleShape3D_k4kou")
 

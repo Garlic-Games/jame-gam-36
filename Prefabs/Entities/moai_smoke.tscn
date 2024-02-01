@@ -1,22 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://xo0raqdao0hp"]
+[gd_scene load_steps=9 format=3 uid="uid://xo0raqdao0hp"]
 
 [ext_resource type="Script" path="res://Scripts/Player/ShotgunBullet.gd" id="1_wo5ee"]
+[ext_resource type="Texture2D" uid="uid://r4lymwruag3j" path="res://Art/Textures/smoke_particle/whitePuff00.png" id="2_8n0dw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1mhtm"]
 size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="Curve" id="Curve_pqkc8"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yqwwv"]
+curve = SubResource("Curve_pqkc8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdfwe"]
 emission_shape_scale = Vector3(0.5, 0.5, 0.5)
 emission_shape = 3
 emission_box_extents = Vector3(0.1, 0.1, 0.1)
 direction = Vector3(0, 0, 0)
-radial_velocity_min = 0.5
-radial_velocity_max = 0.5
+angular_velocity_min = 0.1
+angular_velocity_max = 0.1
+orbit_velocity_min = 0.3
+orbit_velocity_max = 0.3
+orbit_velocity_curve = SubResource("CurveTexture_yqwwv")
 gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 1, 0.121569)
+anim_speed_max = 7.29
 
-[sub_resource type="SphereMesh" id="SphereMesh_hd4pg"]
-radius = 0.01
-height = 0.01
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5e2cj"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_8n0dw")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_p4jci"]
+material = SubResource("StandardMaterial3D_5e2cj")
 
 [node name="MoaiSmoke" type="CharacterBody3D"]
 collision_layer = 16
@@ -28,14 +53,13 @@ script = ExtResource("1_wo5ee")
 shape = SubResource("BoxShape3D_1mhtm")
 
 [node name="BulletSprite" type="GPUParticles3D" parent="."]
-emitting = false
-amount = 50
-lifetime = 2.0
-one_shot = true
+amount = 10
+lifetime = 6.0
 explosiveness = 1.0
 visibility_aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
 local_coords = true
+draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_vdfwe")
-draw_pass_1 = SubResource("SphereMesh_hd4pg")
+draw_pass_1 = SubResource("QuadMesh_p4jci")
 
 [connection signal="finished" from="BulletSprite" to="." method="_on_bullet_sprite_finished"]
