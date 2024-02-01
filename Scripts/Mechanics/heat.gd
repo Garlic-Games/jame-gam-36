@@ -3,13 +3,16 @@ extends Node
 signal on_heat_changed;
 
 @export var max_heat : int = 1000;
+@export var birds : Array[Node] = [];
 
 var current_heat : int = 0;
 var gameplay_manager : GameplayManager = null;
 
 func _ready():
-	gameplay_manager = $"..";
-	for bird in  $"../Birds".get_children():
+	if get_parent() is GameplayManager:
+		gameplay_manager = get_parent();
+		
+	for bird in birds:
 		bird.connect("on_bird_heat_changed", func(val): add_heat(val));
 
 
