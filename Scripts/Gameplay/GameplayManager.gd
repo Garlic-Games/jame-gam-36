@@ -17,7 +17,7 @@ func Restart():
 	GameStateMachine.changeState(GameStateMachine.GAME_STATE.PLAYING);
 
 
-func onGameStateChange(state, oldState):
+func onGameStateChange(state, _oldState):
 	if(state == GameStateMachine.GAME_STATE.GAME_OVER):
 		gameOverMenu.show();
 	else:

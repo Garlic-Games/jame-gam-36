@@ -10,7 +10,7 @@ func _ready():
 func _on_start_game_pressed():
 	click_audio.play();
 	$Transitions/Fade/Animation.play("fade_out");
-	$Transitions/Fade/Animation.connect("animation_finished", func(val): StartGame());
+	$Transitions/Fade/Animation.connect("animation_finished", func(_val): StartGame());
 
 
 func StartGame():

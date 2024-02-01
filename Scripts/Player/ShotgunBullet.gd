@@ -8,7 +8,7 @@ func _ready():
 	particle.emitting = true;
 
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	var collision = move_and_collide(velocity);
 
 	if collision:

@@ -13,7 +13,7 @@ func _ready():
 		bird.connect("on_bird_heat_changed", func(val): add_heat(val));
 
 
-func _process(delta):
+func _process(_delta):
 	if (current_heat >= max_heat):
 		gameplay_manager.EndGame();
 

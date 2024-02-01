@@ -40,16 +40,16 @@ func _process(delta):
 	position.y = initial_position_y + floating_amplitude * sin(2.0 * PI / floating_period * timer_floating);
 
 
-func shoot(target):
+func shoot(current_target):
 	var instance = bullet.instantiate(); 
 	$"/root/".add_child(instance);
 	instance.global_position = global_position; 
 	instance.global_rotation = global_rotation;
-	instance.velocity = global_position.direction_to(target.global_position) * bullet_speed; 
+	instance.velocity = global_position.direction_to(current_target.global_position) * bullet_speed; 
 
 func _on_sight_area_body_entered(body):
 	target = body;
 
 
-func _on_sight_area_body_exited(body):
+func _on_sight_area_body_exited(_body):
 	target = null;

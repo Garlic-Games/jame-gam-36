@@ -39,6 +39,6 @@ func get_direction() -> Vector3:
 	return direction;
 
 
-func apply_gravity(gravity: float) -> void:
+func apply_gravity(gravity_value: float) -> void:
 	if not is_on_floor():
-		velocity.y -= gravity;
+		velocity.y -= gravity_value;
