@@ -9,7 +9,8 @@
 [ext_resource type="Script" path="res://Scripts/Player/WeaponChange.gd" id="7_kbkmc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1j2vr"]
-radius = 0.777538
+radius = 0.947665
+height = 2.95736
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3pajm"]
 
