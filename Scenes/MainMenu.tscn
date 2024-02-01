@@ -252,6 +252,7 @@ vertical_alignment = 1
 [node name="Transitions" type="Node" parent="."]
 
 [node name="Fade" parent="Transitions" instance=ExtResource("4_psbl3")]
+layer = 128
 
 [node name="Audio" type="Node" parent="."]
 

@@ -27,10 +27,10 @@ ambient_light_sky_contribution = 0.15
 tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hus64"]
-size = Vector3(30, 0.5, 30)
+size = Vector3(300, 0.5, 300)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ilqs3"]
-size = Vector2(30, 30)
+size = Vector2(300, 300)
 
 [node name="Gameplay" type="Node3D" node_paths=PackedStringArray("gameOverMenu")]
 script = ExtResource("1_n5lw0")
@@ -74,7 +74,7 @@ player = NodePath("../../Player")
 layer = 10
 visible = false
 
-[node name="Map" type="Node" parent="."]
+[node name="Map" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
 environment = SubResource("Environment_jfou3")
@@ -93,12 +93,31 @@ shape = SubResource("BoxShape3D_hus64")
 mesh = SubResource("PlaneMesh_ilqs3")
 
 [node name="Player" parent="." instance=ExtResource("3_iujbc")]
-transform = Transform3D(1, -0.000105512, -0.000152877, 0.000105694, 0.999999, 0.00117219, 0.000152751, -0.00117221, 0.999999, 0.0115761, 1.1759, -0.00186348)
+transform = Transform3D(1, -0.000105512, -0.000152877, 0.000105694, 0.999999, 0.00117219, 0.000152751, -0.00117221, 0.999999, 0.0115761, 1.1759, 42.5752)
 collision_mask = 17
 
 [node name="Moai" parent="." instance=ExtResource("9_scw40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16802, 1.95171, 3.38527)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 6.35791, 0)
 
 [node name="Transitions" type="Node" parent="."]
 
 [node name="Fade" parent="Transitions" instance=ExtResource("10_hbl1l")]
+
+[node name="Map2" type="Node3D" parent="."]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map2"]
+environment = SubResource("Environment_jfou3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map2"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 0, 0)
+light_energy = 0.086
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="Map2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map2/Floor"]
+shape = SubResource("BoxShape3D_hus64")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map2/Floor"]
+mesh = SubResource("PlaneMesh_ilqs3")
