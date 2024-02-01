@@ -9,6 +9,7 @@ extends Node3D
 @export var obstacles : Node = null;
 @export var waypoints : Node = null;
 @export_group("Shooting options")
+@export var shoot_treshold: float = 0.1;
 @export var bullet_speed: float = 2;
 @export var shoot_period : float = 3.0;
 
@@ -21,7 +22,7 @@ var initial_position_y : float;
 var positions : Array[Vector3] = [];
 var waypoint_index : int = 0;
 var timer_floating : float = 0.0;
-var timer_shoot: float = 0.0;
+var timer_shoot: float = shoot_period;
 
 signal bullet_shot;
 
@@ -40,26 +41,32 @@ func _ready():
 
 func _process(delta):
 	float_animation(delta);
+	timer_shoot += delta;
 	
-	if !target && !is_player_visible():
+	if !target || is_there_a_wall():
 		return;
 		
 	rotate_towards_target(delta);
 	
-	timer_shoot += delta;
 	if timer_shoot >= shoot_period:
-		timer_shoot = 0;
-		shoot(target);
+		if check_if_facing(target.global_position, shoot_treshold):
+			timer_shoot = 0;
+			shoot(target);
+
+func check_if_facing(target: Vector3, threshold: float) -> bool: 
+	var dir = global_position.normalized().direction_to(target.normalized());
+	var product = dir.dot(basis.z.normalized());
+	return  product > threshold;
 
 func rotate_towards_target(delta: float) -> void:
 	var direction = global_position.direction_to(target.position);
 	var next_rotation = atan2(-direction.x, -direction.z)+90;
 	rotation.y = lerp_angle(rotation.y, next_rotation, delta * rotation_speed);
 
-func is_player_visible() -> bool:
-	var ray = PhysicsRayQueryParameters3D.create(global_position, target.global_position, FLOOR_MASK|PLAYER_MASK);
+func is_there_a_wall() -> bool:
+	var ray = PhysicsRayQueryParameters3D.create(global_position, target.global_position, FLOOR_MASK);
 	var collision = get_world_3d().direct_space_state.intersect_ray(ray);
-	return !collision.is_empty() || collision.collider_id == target.get_instance_id();
+	return !collision.is_empty();
 
 func float_animation(delta: float) -> void:
 	timer_floating += delta;

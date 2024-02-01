@@ -45,7 +45,7 @@ material = SubResource("StandardMaterial3D_5e2cj")
 
 [node name="MoaiSmoke" type="CharacterBody3D"]
 collision_layer = 16
-collision_mask = 2
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_wo5ee")
 
