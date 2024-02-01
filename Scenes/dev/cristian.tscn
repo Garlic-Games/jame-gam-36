@@ -10,23 +10,23 @@
 [ext_resource type="PackedScene" uid="uid://cstwwhxy36qli" path="res://Prefabs/Player/player.tscn" id="8_lsx88"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_1fs2k"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t4h7m"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_myfou"]
+sky_material = SubResource("ProceduralSkyMaterial_t4h7m")
+
+[sub_resource type="Environment" id="Environment_u18tx"]
+background_mode = 2
+sky = SubResource("Sky_myfou")
+tonemap_mode = 2
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_3bpg7"]
 size = Vector3(30, 0.5, 30)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_orrxx"]
 size = Vector2(30, 30)
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t4h7m"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_mouic"]
-sky_material = SubResource("ProceduralSkyMaterial_t4h7m")
-
-[sub_resource type="Environment" id="Environment_u18tx"]
-background_mode = 2
-sky = SubResource("Sky_mouic")
-tonemap_mode = 2
 
 [node name="Cristian" type="Node3D" node_paths=PackedStringArray("gameOverMenu")]
 script = ExtResource("1_jsmin")
@@ -72,6 +72,14 @@ visible = false
 
 [node name="Map" type="Node" parent="."]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = SubResource("Environment_u18tx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.75, -0.43301, 0, 0, 0)
+light_energy = 0.086
+shadow_enabled = true
+
 [node name="Floor" type="StaticBody3D" parent="Map"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Floor"]
@@ -79,14 +87,6 @@ shape = SubResource("BoxShape3D_3bpg7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/Floor"]
 mesh = SubResource("PlaneMesh_orrxx")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_energy = 0.086
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_u18tx")
 
 [node name="Player" parent="." instance=ExtResource("8_lsx88")]
 transform = Transform3D(1, -0.000105512, -0.000152877, 0.000105694, 0.999999, 0.00117219, 0.000152751, -0.00117221, 0.999999, 0.0115761, 1.1759, -0.00186348)
