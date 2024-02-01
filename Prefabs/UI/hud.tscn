@@ -23,20 +23,20 @@ border_blend = true
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_mbuvp")
 
-[node name="Crosshair" type="ColorRect" parent="."]
-visible = false
+[node name="Crosshair" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 1.0
-offset_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 0, 1)
+texture = ExtResource("2_parm1")
+stretch_mode = 2
 
 [node name="Ammo" type="ProgressBar" parent="."]
 anchors_preset = 2
@@ -70,18 +70,3 @@ grow_vertical = 2
 max_value = 1000.0
 step = 1.0
 fill_mode = 3
-
-[node name="TextureRect" type="TextureRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_parm1")
-stretch_mode = 2
