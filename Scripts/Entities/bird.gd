@@ -57,7 +57,7 @@ func _physics_process(delta):
 		
 	if (!waypointGroup):
 		printerr("No waypoint group set for ", self)
-		pass
+		return;
 	if _seekNode == null:
 		_nextPath();
 	if _moving:
@@ -72,6 +72,8 @@ func _physics_process(delta):
 		
 	
 func _nextPath():
+	if !waypointGroup:
+		return;
 	_seekNode = waypointGroup.getRandomNode();
 	_lastDistance = global_position.distance_to(_seekNode.global_position);
 	look_at(_seekNode.global_position)

@@ -91,7 +91,7 @@ scroll={
 
 [physics]
 
-3d/default_gravity=5.0
+3d/default_gravity=9.0
 
 [rendering]
 
