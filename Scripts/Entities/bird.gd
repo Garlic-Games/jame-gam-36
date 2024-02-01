@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 
 signal on_bird_heat_changed;
 
@@ -12,6 +12,8 @@ signal on_bird_heat_changed;
 @export var heat_decay_period : float = 1.0;
 @export var time_to_start_cooling : float = 2.0;
 @export var animation_max_speed : float = 12.0;
+@export var waypointGroup: PathWaypointGroup;
+@export var Speed: float = 2.5;
 
 var current_fire_units : int = 0;
 var is_alive = true;
@@ -19,6 +21,9 @@ var is_alive = true;
 var timer_heat_decay = 0.0;
 var timer_cooling = 0.0;
 
+var _seekNode: Node3D = null;
+var _lastDistance: float = 999999.9;
+var _moving: bool = false;
 
 func _ready():
 	$AnimationPlayer.play("fly");
@@ -45,6 +50,29 @@ func _process(delta):
 
 		if current_fire_units >= max_fire_units:
 			kill();
+
+func _physics_process(delta):
+	if (!waypointGroup):
+		printerr("No waypoint group set for ", self)
+		pass
+	if _seekNode == null:
+		_nextPath();
+	if _moving:
+		translate(Vector3.FORWARD * Speed * delta);
+		
+	var  newDistance = global_position.distance_to(_seekNode.global_position);
+	if newDistance > _lastDistance:
+		_moving = false;
+		_nextPath()
+	else:
+		_lastDistance = newDistance;
+		
+	
+func _nextPath():
+	_seekNode = waypointGroup.getRandomNode();
+	_lastDistance = global_position.distance_to(_seekNode.global_position);
+	look_at(_seekNode.global_position)
+	_moving = true;
 
 
 func add_fire(fire_units : int):

@@ -28,6 +28,9 @@ height = 1.37754
 [node name="bird" instance=ExtResource("1_26lmq")]
 script = ExtResource("1_5a6ki")
 
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.157965, 5.88561e-07, 9.41542e-08, 0.987445)
