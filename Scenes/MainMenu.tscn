@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjssovxl7m1cw"]
+[gd_scene load_steps=16 format=3 uid="uid://bjssovxl7m1cw"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/MainMenuManager.gd" id="1_16dku"]
 [ext_resource type="PackedScene" uid="uid://cka4heni3dqxn" path="res://Prefabs/Entities/bird.tscn" id="2_t7nxy"]
 [ext_resource type="FontFile" uid="uid://bqthgjhfjkkhh" path="res://Art/Fonts/New Era Casual Bold.ttf" id="3_8n75w"]
+[ext_resource type="Script" path="res://Scripts/Menu/settings_menu.gd" id="4_fbhr1"]
 [ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="4_psbl3"]
 [ext_resource type="AudioStream" uid="uid://c6f6p5y22weoh" path="res://Art/Sounds/click.wav" id="5_l4y4e"]
+[ext_resource type="Script" path="res://Scripts/Menu/credits_menu.gd" id="5_t8nkq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xvx3h"]
 sky_top_color = Color(0.203922, 0.67451, 1, 1)
@@ -33,9 +35,25 @@ tonemap_mode = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tva8o"]
 
-[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("click_audio")]
+[sub_resource type="GDScript" id="GDScript_4x5w2"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("click_audio", "camera", "camera_waypoints")]
 script = ExtResource("1_16dku")
 click_audio = NodePath("Audio/ClickAudio")
+camera = NodePath("Background/Camera3D")
+camera_waypoints = NodePath("Background/Waypoints")
 
 [node name="Background" type="Node" parent="."]
 
@@ -47,20 +65,30 @@ transform = Transform3D(-0.200942, 0.77474, -0.5995, -0.9796, -0.157261, 0.12511
 shadow_bias = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="Background"]
-transform = Transform3D(0.942915, 0, -0.333033, 0, 1, 0, 0.333033, 0, 0.942915, -0.505437, 0.00477815, 0.910706)
+transform = Transform3D(0.956696, 0.120073, -0.265172, -0.279516, 0.633265, -0.721696, 0.0812675, 0.764564, 0.639405, -0.421118, -0.633997, -0.0364797)
 projection = 1
-size = 1.1
 
 [node name="bird" parent="Background" instance=ExtResource("2_t7nxy")]
 transform = Transform3D(-0.999926, 0.012217, 8.74228e-08, 0.012217, 0.999925, 0, -8.74163e-08, 1.06804e-09, -1, -0.369303, -0.148491, -0.192496)
 main_menu_mode = true
 animation_speed = 1.3
 
+[node name="Waypoints" type="Node" parent="Background"]
+
+[node name="Main_0" type="Node3D" parent="Background/Waypoints"]
+transform = Transform3D(0.942915, 0, -0.333033, 0, 1, 0, 0.333033, 0, 0.942915, -0.505437, 0.00477815, 0.910706)
+
+[node name="Settings_1" type="Node3D" parent="Background/Waypoints"]
+transform = Transform3D(0.440918, 0.502138, -0.743941, -0.149751, 0.858398, 0.490639, 0.884967, -0.104926, 0.453679, -2.11748, 1.19043, 1.64444)
+
+[node name="Credits_2" type="Node3D" parent="Background/Waypoints"]
+transform = Transform3D(0.956696, 0.120073, -0.265172, -0.279516, 0.633265, -0.721696, 0.0812675, 0.764563, 0.639405, -0.421118, -0.633997, -0.0364797)
+
 [node name="Menu" type="Node" parent="."]
 
-[node name="Canvas" type="CanvasLayer" parent="Menu"]
+[node name="Main" type="CanvasLayer" parent="Menu"]
 
-[node name="Rewarmed" type="Label" parent="Menu/Canvas"]
+[node name="Rewarmed" type="Label" parent="Menu/Main"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -79,7 +107,7 @@ text = "REWARMED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Canvas"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Main"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -92,7 +120,7 @@ offset_bottom = -48.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="StartGame" type="Button" parent="Menu/Canvas/VBoxContainer"]
+[node name="StartGame" type="Button" parent="Menu/Main/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 0)
@@ -106,7 +134,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_5cbme")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tva8o")
 text = "Start game"
 
-[node name="Shadow" type="Label" parent="Menu/Canvas/VBoxContainer/StartGame"]
+[node name="Shadow" type="Label" parent="Menu/Main/VBoxContainer/StartGame"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -131,7 +159,7 @@ text = "Start game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings" type="Button" parent="Menu/Canvas/VBoxContainer"]
+[node name="Settings" type="Button" parent="Menu/Main/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 0)
@@ -145,7 +173,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_5cbme")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tva8o")
 text = "Settings"
 
-[node name="Shadow" type="Label" parent="Menu/Canvas/VBoxContainer/Settings"]
+[node name="Shadow" type="Label" parent="Menu/Main/VBoxContainer/Settings"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -170,7 +198,7 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Credits" type="Button" parent="Menu/Canvas/VBoxContainer"]
+[node name="Credits" type="Button" parent="Menu/Main/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 0)
@@ -184,7 +212,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_5cbme")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tva8o")
 text = "Credits"
 
-[node name="Shadow" type="Label" parent="Menu/Canvas/VBoxContainer/Credits"]
+[node name="Shadow" type="Label" parent="Menu/Main/VBoxContainer/Credits"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -210,7 +238,7 @@ text = "Credits
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Exit" type="Button" parent="Menu/Canvas/VBoxContainer"]
+[node name="Exit" type="Button" parent="Menu/Main/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 0)
@@ -224,7 +252,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_5cbme")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tva8o")
 text = "Exit"
 
-[node name="Shadow" type="Label" parent="Menu/Canvas/VBoxContainer/Exit"]
+[node name="Shadow" type="Label" parent="Menu/Main/VBoxContainer/Exit"]
 z_index = -1
 layout_mode = 1
 anchors_preset = 8
@@ -249,6 +277,219 @@ text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Settings" type="CanvasLayer" parent="Menu" node_paths=PackedStringArray("text_fullscreen")]
+visible = false
+script = ExtResource("4_fbhr1")
+text_fullscreen = NodePath("VBoxContainer/RowFullscreen/FullscreenButton/Text")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Settings"]
+custom_minimum_size = Vector2(0, 500)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -273.0
+offset_right = -47.0
+offset_bottom = 227.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Settings" type="Label" parent="Menu/Settings/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85098, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RowFullscreen" type="HSplitContainer" parent="Menu/Settings/VBoxContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="Label" parent="Menu/Settings/VBoxContainer/RowFullscreen"]
+z_index = -1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 30
+text = "Fullscreen"
+vertical_alignment = 1
+
+[node name="FullscreenButton" type="Button" parent="Menu/Settings/VBoxContainer/RowFullscreen"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3reef")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_654lb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5cbme")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tva8o")
+
+[node name="Text" type="Label" parent="Menu/Settings/VBoxContainer/RowFullscreen/FullscreenButton"]
+z_index = -1
+layout_mode = 2
+offset_right = 235.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 30
+text = "NO"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = SubResource("GDScript_4x5w2")
+
+[node name="Back" type="Button" parent="Menu/Settings"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -92.495
+offset_right = -76.9995
+offset_bottom = -45.495
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(1, 0.85098, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3reef")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_654lb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5cbme")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tva8o")
+text = "Back"
+
+[node name="Shadow" type="Label" parent="Menu/Settings/Back"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -15.5
+offset_right = 47.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="CanvasLayer" parent="Menu"]
+visible = false
+script = ExtResource("5_t8nkq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Credits"]
+custom_minimum_size = Vector2(0, 500)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -273.0
+offset_right = -47.0
+offset_bottom = 227.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Credits" type="Label" parent="Menu/Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85098, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rows" type="HSplitContainer" parent="Menu/Credits/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Menu/Credits"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -92.495
+offset_right = -76.9995
+offset_bottom = -45.495
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(1, 0.85098, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3reef")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_654lb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5cbme")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tva8o")
+text = "Back"
+
+[node name="Shadow" type="Label" parent="Menu/Credits/Back"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -15.5
+offset_right = 47.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Transitions" type="Node" parent="."]
 
 [node name="Fade" parent="Transitions" instance=ExtResource("4_psbl3")]
@@ -259,15 +500,19 @@ layer = 128
 [node name="ClickAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_l4y4e")
 
-[connection signal="focus_entered" from="Menu/Canvas/VBoxContainer/StartGame" to="." method="_on_start_game_focus_entered"]
-[connection signal="mouse_entered" from="Menu/Canvas/VBoxContainer/StartGame" to="." method="_on_start_game_mouse_entered"]
-[connection signal="pressed" from="Menu/Canvas/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
-[connection signal="focus_entered" from="Menu/Canvas/VBoxContainer/Settings" to="." method="_on_settings_focus_entered"]
-[connection signal="mouse_entered" from="Menu/Canvas/VBoxContainer/Settings" to="." method="_on_settings_mouse_entered"]
-[connection signal="pressed" from="Menu/Canvas/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="focus_entered" from="Menu/Canvas/VBoxContainer/Credits" to="." method="_on_credits_focus_entered"]
-[connection signal="mouse_entered" from="Menu/Canvas/VBoxContainer/Credits" to="." method="_on_credits_mouse_entered"]
-[connection signal="pressed" from="Menu/Canvas/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="focus_entered" from="Menu/Canvas/VBoxContainer/Exit" to="." method="_on_exit_focus_entered"]
-[connection signal="mouse_entered" from="Menu/Canvas/VBoxContainer/Exit" to="." method="_on_exit_mouse_entered"]
-[connection signal="pressed" from="Menu/Canvas/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="Menu/Main/VBoxContainer/StartGame" to="." method="on_button_hovered"]
+[connection signal="pressed" from="Menu/Main/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="mouse_entered" from="Menu/Main/VBoxContainer/Settings" to="." method="on_button_hovered"]
+[connection signal="pressed" from="Menu/Main/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="Menu/Main/VBoxContainer/Credits" to="." method="on_button_hovered"]
+[connection signal="pressed" from="Menu/Main/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="Menu/Main/VBoxContainer/Exit" to="." method="on_button_hovered"]
+[connection signal="pressed" from="Menu/Main/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Menu/Settings/VBoxContainer/RowFullscreen/FullscreenButton" to="." method="on_button_hovered"]
+[connection signal="pressed" from="Menu/Settings/VBoxContainer/RowFullscreen/FullscreenButton" to="Menu/Settings" method="_on_fullscreen_button_pressed"]
+[connection signal="mouse_entered" from="Menu/Settings/Back" to="." method="on_button_hovered"]
+[connection signal="pressed" from="Menu/Settings/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Menu/Settings/Back" to="Menu/Settings" method="_on_back_pressed"]
+[connection signal="mouse_entered" from="Menu/Credits/Back" to="." method="on_button_hovered"]
+[connection signal="pressed" from="Menu/Credits/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Menu/Credits/Back" to="Menu/Credits" method="_on_back_pressed"]
