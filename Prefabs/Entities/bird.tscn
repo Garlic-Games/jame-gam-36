@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cka4heni3dqxn"]
 
-[ext_resource type="Script" path="res://Scripts/entities/bird.gd" id="1_5a6ki"]
+[ext_resource type="Script" path="res://Scripts/Entities/bird.gd" id="1_5a6ki"]
 [ext_resource type="PackedScene" uid="uid://cq8e04rbyjl0j" path="res://Art/Models/bird.glb" id="1_26lmq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m15lm"]
@@ -68,7 +68,6 @@ show_percentage = false
 [node name="Sprite3D" type="Sprite3D" parent="." index="3"]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.243908, 0)
 billboard = 1
-no_depth_test = true
 fixed_size = true
 texture = SubResource("ViewportTexture_c75oq")
 
