@@ -422,10 +422,9 @@ size = Vector3(3, 30, 50)
 [node name="Gameplay" type="Node3D"]
 script = ExtResource("1_n5lw0")
 
-[node name="Heat" type="Node" parent="." node_paths=PackedStringArray("birds")]
+[node name="Heat" type="Node" parent="."]
 script = ExtResource("2_7pvfv")
 max_heat = 1200
-birds = NodePath("../Birds")
 
 [node name="Birds" type="Node" parent="."]
 

@@ -80,7 +80,7 @@ func _nextPath():
 
 func add_fire(fire_units : int):
 	current_fire_units += fire_units;
-	
+
 	if current_fire_units < 0:
 		current_fire_units = 0;
 	else:
