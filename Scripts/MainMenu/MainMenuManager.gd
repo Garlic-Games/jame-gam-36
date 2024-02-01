@@ -4,12 +4,13 @@ extends Node3D
 
 
 func _ready():
-	$Transitions/TransitionFadeIn/Animation.play("fade_in");
-
+	$Transitions/Fade/Animation.play("fade_in");
+	
 
 func _on_start_game_pressed():
 	click_audio.play();
-	StartGame()
+	$Transitions/Fade/Animation.play("fade_out");
+	$Transitions/Fade/Animation.connect("animation_finished", func(val): StartGame());
 
 
 func StartGame():
