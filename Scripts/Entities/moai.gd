@@ -6,6 +6,8 @@ extends Node3D
 @export var bullet_speed: float = 2;
 @export var floating_amplitude : float = 0.25;
 @export var floating_period : float = 3.0;
+@export var obstacles : Node = null;
+@export var waypoints : Node = null;
 
 @onready var bullet: PackedScene = preload("res://Prefabs/Entities/moai_smoke.tscn");
 const PLAYER_MASK = 2;
@@ -13,8 +15,19 @@ const PLAYER_MASK = 2;
 var initial_position_y : float;
 var timer_floating : float = 0.0;
 
+var positions : Array[Vector3] = [];
+var waypoint_index : int = 0;
 
 func _ready():
+	for obstacle in obstacles.get_children():
+		obstacle.connect("on_obstacle_cleared", go_next_waypoint);
+		
+	for waypoint in waypoints.get_children():
+		positions.append(waypoint.position);
+
+	waypoint_index = 0;
+		
+	position = positions[0];
 	initial_position_y = position.y;
 
 
@@ -46,6 +59,13 @@ func shoot(current_target):
 	instance.global_position = global_position; 
 	instance.global_rotation = global_rotation;
 	instance.velocity = global_position.direction_to(current_target.global_position) * bullet_speed; 
+
+
+func go_next_waypoint():
+	if waypoint_index + 1 < positions.size():
+		waypoint_index += 1;
+		position = positions[waypoint_index];
+
 
 func _on_sight_area_body_entered(body):
 	target = body;

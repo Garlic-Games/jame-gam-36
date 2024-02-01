@@ -4,11 +4,11 @@ class_name Raygun;
 signal on_ammo_changed;
 
 @export_group("Weapon settings")
-@export var max_ammo : int = 150;
-@export var starting_ammo : int = 100;
+@export var max_ammo : int = 200;
+@export var starting_ammo : int = 150;
 @export var ammo_recharged_per_hit : int = 3;
 @export var ray_distance : float = 50.0;
-@export var fire_units_per_tick : int = 1;
+@export var fire_units_per_tick : int = 2;
 @export var time_between_ticks : float = 0.1;
 
 var current_ammo : int = 0;
