@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="10_hbl1l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kdnv7"]
+sky_top_color = Color(0.333333, 0.670588, 0.968627, 1)
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
@@ -21,6 +22,8 @@ sky_material = SubResource("ProceduralSkyMaterial_kdnv7")
 [sub_resource type="Environment" id="Environment_jfou3"]
 background_mode = 2
 sky = SubResource("Sky_mouic")
+ambient_light_color = Color(0.713726, 0.713726, 0.713726, 1)
+ambient_light_sky_contribution = 0.15
 tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hus64"]
