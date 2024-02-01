@@ -2,6 +2,11 @@ extends Node
 
 signal on_bird_heat_changed;
 
+@export_group("Main menu settings")
+@export var main_menu_mode : bool = false;
+@export var animation_speed : float = 1.0;
+
+@export_group("Gameplay settings")
 @export var max_fire_units : int = 100;
 @export var heat_decay : int = 5;
 @export var heat_decay_period : float = 1.0;
@@ -17,10 +22,18 @@ var timer_cooling = 0.0;
 
 func _ready():
 	$AnimationPlayer.play("fly");
-	$AnimationPlayer.seek(randf_range(0.0, $AnimationPlayer.current_animation_length));
+	
+	if main_menu_mode:
+		$SubViewport/ProgressBar.hide();
+		$AnimationPlayer.speed_scale = animation_speed;
+	else:
+		$AnimationPlayer.seek(randf_range(0.0, $AnimationPlayer.current_animation_length));
 
 
 func _process(delta):
+	if main_menu_mode:
+		return;
+		
 	if is_alive:
 		timer_heat_decay += delta;
 		timer_cooling += delta;
