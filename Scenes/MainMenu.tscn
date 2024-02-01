@@ -67,6 +67,7 @@ shadow_bias = 10.0
 [node name="Camera3D" type="Camera3D" parent="Background"]
 transform = Transform3D(0.956696, 0.120073, -0.265172, -0.279516, 0.633265, -0.721696, 0.0812675, 0.764564, 0.639405, -0.421118, -0.633997, -0.0364797)
 projection = 1
+near = 0.001
 
 [node name="bird" parent="Background" instance=ExtResource("2_t7nxy")]
 transform = Transform3D(-0.999926, 0.012217, 8.74228e-08, 0.012217, 0.999925, 0, -8.74163e-08, 1.06804e-09, -1, -0.369303, -0.148491, -0.192496)
