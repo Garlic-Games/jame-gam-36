@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdu1thohecrr2"]
+[gd_scene load_steps=7 format=3 uid="uid://cdu1thohecrr2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="1_mbuvp"]
 [ext_resource type="Texture2D" uid="uid://bbxusvfufrntg" path="res://Art/Textures/crosshair.png" id="2_parm1"]
@@ -11,6 +11,11 @@ border_width_right = 1
 border_width_bottom = 6
 border_color = Color(0, 0, 0, 0.392157)
 border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he130"]
 bg_color = Color(1, 0.356863, 0, 1)
@@ -19,6 +24,30 @@ border_width_top = 6
 border_width_bottom = 6
 border_color = Color(1, 0.647059, 0, 1)
 border_blend = true
+corner_radius_top_left = 500
+corner_radius_top_right = 500
+corner_radius_bottom_right = 500
+corner_radius_bottom_left = 500
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjolt"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 0.392157)
+border_blend = true
+corner_radius_bottom_right = 500
+corner_radius_bottom_left = 500
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxabn"]
+bg_color = Color(0.705882, 0, 0, 1)
+border_width_left = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.219608, 0, 0, 1)
+border_blend = true
+corner_radius_bottom_right = 500
+corner_radius_bottom_left = 500
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_mbuvp")
@@ -67,6 +96,10 @@ offset_right = -24.0
 offset_bottom = 16.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_xjolt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gxabn")
 max_value = 1000.0
 step = 1.0
+value = 500.0
 fill_mode = 3
+show_percentage = false
