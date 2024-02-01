@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdjjl0c7ctyka"]
+[gd_scene load_steps=2 format=3 uid="uid://dd1fie6v0ba2h"]
 
-[ext_resource type="PackedScene" uid="uid://58tmf254ahyu" path="res://Art/Models/male_body.tscn" id="1_4cxkd"]
+[ext_resource type="PackedScene" path="res://Art/Models/male_body.tscn" id="1_4cxkd"]
 
 [node name="Guillem" type="Node3D"]
 

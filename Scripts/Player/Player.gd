@@ -9,9 +9,6 @@ extends CharacterBody3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 
-func _ready():#TODO Remove this as soon as we can
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
-
 
 func _physics_process(delta):
 	# Add the gravity.

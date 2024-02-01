@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnl4dfk6hg1sg"]
+[gd_scene load_steps=17 format=3 uid="uid://cnl4dfk6hg1sg"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_n5lw0"]
 [ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_1uyik"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdu1thohecrr2" path="res://Prefabs/UI/hud.tscn" id="6_5eabv"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_scw40"]
 [ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="10_hbl1l"]
+[ext_resource type="Script" path="res://Scripts/Animations/fade.gd" id="11_w5rti"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kdnv7"]
 sky_top_color = Color(0.333333, 0.670588, 0.968627, 1)
@@ -75,6 +76,7 @@ layer = 10
 visible = false
 
 [node name="Map" type="Node3D" parent="."]
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
 environment = SubResource("Environment_jfou3")
@@ -102,9 +104,9 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 6.35791, 0)
 [node name="Transitions" type="Node" parent="."]
 
 [node name="Fade" parent="Transitions" instance=ExtResource("10_hbl1l")]
+script = ExtResource("11_w5rti")
 
 [node name="Map2" type="Node3D" parent="."]
-visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Map2"]
 environment = SubResource("Environment_jfou3")

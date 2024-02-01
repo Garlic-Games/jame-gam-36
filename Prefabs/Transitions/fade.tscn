@@ -8,6 +8,7 @@ script/source = "extends Node
 
 func _ready():
 	$Animation.speed_scale = 1.0 / duration;
+	$Animation.play(\"fade_in\");
 "
 
 [sub_resource type="Animation" id="Animation_r2yl6"]

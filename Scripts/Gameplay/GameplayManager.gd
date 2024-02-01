@@ -4,10 +4,8 @@ class_name GameplayManager;
 @export var gameOverMenu: GameOverManager;
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
 	GameStateMachine.connect("stateChange", onGameStateChange);
-
-	$Transitions/Fade/Animation.play("fade_in");
-
 
 func EndGame():
 	GameStateMachine.changeState(GameStateMachine.GAME_STATE.GAME_OVER);
