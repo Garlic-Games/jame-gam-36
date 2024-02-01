@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://u40l62v2dp8d" path="res://Prefabs/Obstacles/obstacle.tscn" id="5_cm0v1"]
 [ext_resource type="PackedScene" uid="uid://cdu1thohecrr2" path="res://Prefabs/UI/hud.tscn" id="6_5eabv"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_scw40"]
-[ext_resource type="Material" path="res://Art/Materials/Paredes.tres" id="10_h2erx"]
+[ext_resource type="Material" uid="uid://byasc07ch87b7" path="res://Art/Materials/Paredes.tres" id="10_h2erx"]
 [ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="10_hbl1l"]
 [ext_resource type="Script" path="res://Scripts/Animations/fade.gd" id="11_w5rti"]
 

@@ -52,7 +52,7 @@ projection = 1
 size = 1.1
 
 [node name="bird" parent="Background" instance=ExtResource("2_t7nxy")]
-transform = Transform3D(0.999921, -0.0121643, 0.00322155, 0.0118286, 0.995948, 0.0891487, -0.0042929, -0.0891035, 0.996013, -0.369303, -0.148491, -0.192496)
+transform = Transform3D(-0.999926, 0.012217, 8.74228e-08, 0.012217, 0.999925, 0, -8.74163e-08, 1.06804e-09, -1, -0.369303, -0.148491, -0.192496)
 main_menu_mode = true
 animation_speed = 1.3
 

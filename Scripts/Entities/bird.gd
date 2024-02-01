@@ -52,6 +52,9 @@ func _process(delta):
 			kill();
 
 func _physics_process(delta):
+	if main_menu_mode:
+		return;
+		
 	if (!waypointGroup):
 		printerr("No waypoint group set for ", self)
 		pass
