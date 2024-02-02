@@ -1,3 +1,5 @@
+class_name EndgamePortal;
+
 extends Node
 
 signal on_portal_entered;

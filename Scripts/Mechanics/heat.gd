@@ -1,6 +1,6 @@
 extends Node
 
-signal on_heat_changed;
+signal on_heat_changed(heat: float);
 signal on_heat_filled;
 
 @export var max_heat : int = 1000;

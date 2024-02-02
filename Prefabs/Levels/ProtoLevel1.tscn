@@ -17,8 +17,8 @@ albedo_color = Color(1, 0.976471, 0.345098, 1)
 material = SubResource("StandardMaterial3D_5xsdp")
 size = Vector2(100, 100)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q3org"]
-data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+[sub_resource type="BoxShape3D" id="BoxShape3D_58yqo"]
+size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8cxbi"]
 flip_faces = true
@@ -72,7 +72,10 @@ mesh = SubResource("PlaneMesh_t0j57")
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_q3org")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_58yqo")
+
+[node name="Node3D2" type="Node3D" parent="."]
 
 [node name="Outside" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -201,13 +204,11 @@ skeleton = NodePath("../../Platform2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TowerGroup/Tower/Platform4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pnmtv")
 
-[node name="Portal2" parent="TowerGroup/Tower/Platform4" node_paths=PackedStringArray("exit") instance=ExtResource("4_sxpw8")]
+[node name="Portal2" parent="TowerGroup/Tower/Platform4" instance=ExtResource("4_sxpw8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98665, 6.4935, 9.46609)
-exit = NodePath("../Portal")
 
-[node name="Portal" parent="TowerGroup/Tower/Platform4" node_paths=PackedStringArray("exit") instance=ExtResource("4_sxpw8")]
+[node name="Portal" parent="TowerGroup/Tower/Platform4" instance=ExtResource("4_sxpw8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0886967, 1.29041, 0.123154)
-exit = NodePath("../Portal2")
 
 [node name="Platform5" type="MeshInstance3D" parent="TowerGroup/Tower"]
 transform = Transform3D(0.982008, 0, 0.188838, 0, 1, 0, -0.188838, 0, 0.982008, -2.55947, 2.40273, -5.15829)

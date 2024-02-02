@@ -7,7 +7,7 @@ class_name GameplayManager;
 @export var tutorial : CanvasLayer = null;
 @export var gameOverMenu: GameOverManager;
 @export var heat : Node = null;
-@export var portal : Node3D = null;
+@export var portal : EndgamePortal = null;
 @export var fade_rectangle : ColorRect = null;
 
 func _ready():
