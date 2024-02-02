@@ -17,7 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dwxwkwcx6pani" path="res://Art/Music/ingame 1.wav" id="14_q61xe"]
 [ext_resource type="AudioStream" uid="uid://bei850m11hqmt" path="res://Art/Music/menu_music.mp3" id="16_gs8cc"]
 [ext_resource type="AudioStream" uid="uid://bheiull2ip7fa" path="res://Art/Music/ingame 2 (cuando todo se ponga dificil).wav" id="16_v3fmi"]
-[ext_resource type="PackedScene" uid="uid://dl0sdxqbgajwj" path="res://Prefabs/music_fade.tscn" id="18_8688n"]
+[ext_resource type="PackedScene" path="res://Prefabs/music_fade.tscn" id="18_8688n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv5mp"]
 sky_top_color = Color(0.333333, 0.670588, 0.968627, 1)
