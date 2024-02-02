@@ -1,6 +1,7 @@
 extends Node
 
 @export_group("Animation Settings")
+@export var music : AudioStreamPlayer = null;
 @export var time_to_skip : float = 3.0;
 @export var label_subtitles : Label = null;
 @export var fade_rectangle : ColorRect = null;
@@ -14,7 +15,7 @@ var is_skip_pressed = false;
 
 func _ready():
 	start_animation();
-
+	
 
 func _input(event):
 	if event is InputEventKey and Input.is_action_pressed("jump"):
@@ -35,8 +36,11 @@ func _process(delta):
 
 
 func start_animation():
-	var tween_animation = get_tree().create_tween();
+	music.play();
+	var tween_music = get_tree().create_tween();
+	tween_music.tween_property(music, "volume_db", -15, 2.0);
 	
+	var tween_animation = get_tree().create_tween();
 	tween_animation.tween_property(fade_rectangle, "color:a", 0.0, 1);
 	tween_animation.tween_interval(1.0);
 	tween_animation.tween_property(label_subtitles, "text", "Greetings, my fellow prisoner.", 1.5);
@@ -72,7 +76,8 @@ func end_animation():
 	tween_animation_end.tween_property(fade_rectangle, "color:a", 1.0, 1);
 	tween_animation_end.tween_interval(1.0);
 	tween_animation_end.tween_callback(load_level);
-
+	var tween_music = get_tree().create_tween();
+	tween_music.tween_property(music, "volume_db", -40, 1.0);
 
 func load_level():
 	GameStateMachine.changeState(GameStateMachine.GAME_STATE.PLAYING);
