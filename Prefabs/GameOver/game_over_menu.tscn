@@ -1,14 +1,132 @@
-[gd_scene load_steps=2 format=3 uid="uid://54n1o7mxvcbk"]
+[gd_scene load_steps=8 format=3 uid="uid://54n1o7mxvcbk"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameOverManager.gd" id="1_gf200"]
+[ext_resource type="FontFile" uid="uid://bqthgjhfjkkhh" path="res://Art/Fonts/New Era Casual Bold.ttf" id="2_ovj8b"]
+[ext_resource type="AudioStream" uid="uid://c6f6p5y22weoh" path="res://Art/Sounds/click.wav" id="3_hjwvf"]
 
-[node name="GameOverMenu" type="CanvasLayer"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_547ba"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4aeje"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b6obt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iw4w6"]
+
+[node name="GameOverMenu" type="CanvasLayer" node_paths=PackedStringArray("click_audio")]
+process_mode = 3
 script = ExtResource("1_gf200")
+click_audio = NodePath("ClickAudio")
 
-[node name="Restart" type="Button" parent="."]
-process_mode = 2
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Restart"
+[node name="Fade" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
-[connection signal="pressed" from="Restart" to="." method="RestartGamePressed"]
+[node name="YouWon" type="Label" parent="."]
+top_level = true
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -48.5
+offset_right = 169.5
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_ovj8b")
+theme_override_font_sizes/font_size = 80
+text = "YOU    WON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionMark" type="Label" parent="."]
+top_level = true
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 107.49
+offset_top = -170.785
+offset_right = 446.49
+offset_bottom = 135.215
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_ovj8b")
+theme_override_font_sizes/font_size = 210
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="Button" parent="."]
+z_index = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.5
+offset_top = -75.9
+offset_right = 124.5
+offset_bottom = -39.9
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_hover_color = Color(1, 0.85098, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ovj8b")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_547ba")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4aeje")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_b6obt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iw4w6")
+text = "Return to main menu"
+
+[node name="Shadow" type="Label" parent="MainMenu"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -18.0
+offset_right = 124.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_ovj8b")
+theme_override_font_sizes/font_size = 30
+text = "Return to main menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hjwvf")
+
+[connection signal="mouse_entered" from="MainMenu" to="." method="_on_button_hovered"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

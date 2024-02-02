@@ -480,6 +480,7 @@ size = Vector3(50, 30, 3)
 size = Vector3(3, 30, 50)
 
 [node name="Gameplay" type="Node3D" node_paths=PackedStringArray("gameOverMenu", "heat", "portal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120588, -0.017498, 0.0261469)
 script = ExtResource("1_n5lw0")
 gameOverMenu = NodePath("UI/GameOverMenu")
 heat = NodePath("Heat")
@@ -561,11 +562,9 @@ heat_threshold = 700
 heat = NodePath("../../Heat")
 player = NodePath("../../Player")
 
-[node name="GameOverMenu" parent="UI" instance=ExtResource("2_1uyik")]
-layer = 10
-visible = false
-
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_7otix")]
+
+[node name="GameOverMenu" parent="UI" instance=ExtResource("2_1uyik")]
 
 [node name="Map" type="Node" parent="."]
 
@@ -908,7 +907,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412617, 9.40481, 74.3486)
 shape = SubResource("BoxShape3D_0txc0")
 
 [node name="Player" parent="." instance=ExtResource("3_iujbc")]
-transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 27.5066, 1.95274, 0.189617)
+transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 27.5116, 1.95274, -0.232104)
 
 [node name="Moai" parent="." node_paths=PackedStringArray("target", "obstacles", "waypoints") instance=ExtResource("9_scw40")]
 transform = Transform3D(1.88564, 0, 0, 0, 1.88564, 0, 0, 0, 1.88564, 4.59382, 6.8981, -10.2277)

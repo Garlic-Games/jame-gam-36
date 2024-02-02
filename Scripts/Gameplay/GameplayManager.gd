@@ -10,7 +10,8 @@ func _ready():
 	GameStateMachine.connect("stateChange", onGameStateChange);
 	heat.connect("on_heat_filled", turn_on_portal);
 	portal.connect("on_portal_entered", EndGame);
-	
+
+
 func EndGame():
 	GameStateMachine.changeState(GameStateMachine.GAME_STATE.GAME_OVER);
 
@@ -21,7 +22,7 @@ func Restart():
 
 func onGameStateChange(state, _oldState):
 	if(state == GameStateMachine.GAME_STATE.GAME_OVER):
-		gameOverMenu.show();
+		gameOverMenu.start_game_over();
 	else:
 		gameOverMenu.hide();
 
