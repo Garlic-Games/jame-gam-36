@@ -15,7 +15,6 @@ func _ready():
 		gameplay_manager = get_parent();
 		
 	for bird in birds.get_children():
-		print(bird)
 		bird.connect("on_bird_heat_changed", func(val): add_heat(val));
 
 
