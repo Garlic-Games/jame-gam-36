@@ -24,8 +24,9 @@ func _physics_process(delta):
 		steps.stop();
 		model.idle();
 	else :
-		model.walk();		
-		steps.walk();
+		if is_on_floor():
+			model.walk();		
+			steps.walk();
 	apply_velocity(direction);
 	move_and_slide();
 
