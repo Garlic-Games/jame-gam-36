@@ -479,9 +479,11 @@ size = Vector3(50, 30, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0txc0"]
 size = Vector3(3, 30, 50)
 
-[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("gameOverMenu")]
+[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("gameOverMenu", "heat", "portal")]
 script = ExtResource("1_n5lw0")
 gameOverMenu = NodePath("UI/GameOverMenu")
+heat = NodePath("Heat")
+portal = NodePath("Map/level1/Portal")
 
 [node name="Heat" type="Node" parent="." node_paths=PackedStringArray("birds")]
 script = ExtResource("2_7pvfv")
@@ -579,7 +581,7 @@ shadow_enabled = true
 transform = Transform3D(0.633287, 0, 0, 0, 0.633287, 0, 0, 0, 0.633287, 0, 0, 0)
 
 [node name="Portal" parent="Map/level1" instance=ExtResource("9_7ppj4")]
-transform = Transform3D(-2.59269e-07, 0, -5.93138, 0, 5.93138, 0, 5.93138, 0, -2.59269e-07, 22.8268, 9.24052, 28.8029)
+transform = Transform3D(-2.59269e-07, 0, -5.93138, 0, 5.93138, 0, 5.93138, 0, -2.59269e-07, 22.8223, 9.22102, 28.8026)
 
 [node name="Ceiling" type="MeshInstance3D" parent="Map/level1"]
 transform = Transform3D(373.088, 0, 0, 0, 0.381202, 0, 0, 0, 538.379, -49.1047, 51.9359, 4.98157)
@@ -906,7 +908,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412617, 9.40481, 74.3486)
 shape = SubResource("BoxShape3D_0txc0")
 
 [node name="Player" parent="." instance=ExtResource("3_iujbc")]
-transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 27.0008, 1.95274, 0.0600946)
+transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 27.5066, 1.95274, 0.189617)
 
 [node name="Moai" parent="." node_paths=PackedStringArray("target", "obstacles", "waypoints") instance=ExtResource("9_scw40")]
 transform = Transform3D(1.88564, 0, 0, 0, 1.88564, 0, 0, 0, 1.88564, 4.59382, 6.8981, -10.2277)

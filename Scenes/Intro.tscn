@@ -21,11 +21,10 @@ metallic_specular = 0.25
 material = SubResource("StandardMaterial3D_drphg")
 radial_segments = 6
 
-[node name="LevelAnim" type="Node3D" node_paths=PackedStringArray("label_subtitles", "fade_rectangle", "raygun", "raygun_target_transform")]
+[node name="LevelAnim" type="Node3D" node_paths=PackedStringArray("label_subtitles", "fade_rectangle", "raygun_target_transform")]
 script = ExtResource("1_7cccr")
 label_subtitles = NodePath("2D/Subtitles")
 fade_rectangle = NodePath("2D/FadeRect")
-raygun = NodePath("")
 raygun_target_transform = NodePath("RaygunFinalTransform")
 
 [node name="Camera3D" type="Camera3D" parent="."]

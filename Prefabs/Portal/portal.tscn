@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctuogdlqakgo4"]
 
-[ext_resource type="Script" path="res://Scripts/Portal/Portal.gd" id="1_4ye3b"]
+[ext_resource type="Script" path="res://Scripts/Portal/portal_endgame.gd" id="1_2rlcx"]
 [ext_resource type="Texture2D" uid="uid://pmdjvfrtdhgs" path="res://Art/Textures/environment/sand_texture.png" id="2_qaegd"]
 [ext_resource type="PackedScene" uid="uid://c2jdrk7ux58mf" path="res://Art/Models/portal/portal.glb" id="3_r0vii"]
 
@@ -21,21 +21,23 @@ size = Vector3(1.5, 2.30811, 0.5)
 
 [node name="Portal" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59998, -13.9227)
-script = ExtResource("1_4ye3b")
+script = ExtResource("1_2rlcx")
 
 [node name="PortalShape" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.495394, 0)
+visible = false
 mesh = SubResource("PlaneMesh_uln8q")
 
 [node name="PortalInteractionArea" type="Area3D" parent="."]
 collision_layer = 64
 collision_mask = 2
+monitoring = false
 
 [node name="PortalInteractionAreaCollider" type="CollisionShape3D" parent="PortalInteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.345947, 0)
 shape = SubResource("BoxShape3D_eu66s")
 
-[node name="portal" parent="." instance=ExtResource("3_r0vii")]
+[node name="PortalFrame" parent="." instance=ExtResource("3_r0vii")]
 transform = Transform3D(-4.10758e-08, 0, -0.939704, 0, 0.939704, 0, 0.939704, 0, -4.10758e-08, 0, -1.46112, 0)
 
 [connection signal="body_entered" from="PortalInteractionArea" to="." method="_on_portal_entered"]
