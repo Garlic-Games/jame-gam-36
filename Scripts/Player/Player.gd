@@ -1,11 +1,12 @@
+class_name Player;
 extends CharacterBody3D
 
-@export_group("Player settings")
+@export_group("Player playersettings")
 @export var speed: float = 5.0;
 @export var jump_speed: float = 5.0;
 @export var sensitivity : float = 2.0;
 
-
+signal player_hurt;
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 
@@ -39,3 +40,6 @@ func get_direction() -> Vector3:
 func apply_gravity(gravity_value: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity_value;
+
+func ouch():
+	player_hurt.emit();

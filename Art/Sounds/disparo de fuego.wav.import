@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cwaamuxcl044h"
+path="res://.godot/imported/disparo de fuego.wav-e4d352a763f46e9dedb34e6c3184a6cb.sample"
+
+[deps]
+
+source_file="res://Art/Sounds/disparo de fuego.wav"
+dest_files=["res://.godot/imported/disparo de fuego.wav-e4d352a763f46e9dedb34e6c3184a6cb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

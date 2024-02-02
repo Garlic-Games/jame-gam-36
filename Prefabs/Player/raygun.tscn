@@ -1,7 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpjl55132kkv1"]
+[gd_scene load_steps=15 format=3 uid="uid://dpjl55132kkv1"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Raygun.gd" id="1_466us"]
 [ext_resource type="PackedScene" uid="uid://bmejbh567cap8" path="res://Art/Models/big_candle.glb" id="2_tv8af"]
+[ext_resource type="Shader" path="res://Art/Shaders/fire.gdshader" id="3_8grlt"]
+[ext_resource type="AudioStream" uid="uid://bpmg0tdctngli" path="res://Art/Sounds/super fuego_pingpong.wav" id="4_hvbbh"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4xqbx"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q7x6v"]
+seamless = true
+noise = SubResource("FastNoiseLite_4xqbx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkvdd"]
+render_priority = 0
+shader = ExtResource("3_8grlt")
+shader_parameter/root_color = Color(1, 0.992157, 0.176471, 1)
+shader_parameter/tip_color = Color(1, 0.03, 0.001, 1)
+shader_parameter/fire_alpha = 0.8
+shader_parameter/fire_speed = Vector2(0, 0.5)
+shader_parameter/fire_aperture = 0.2
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_q7x6v")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wpx51"]
+material = SubResource("ShaderMaterial_lkvdd")
+top_radius = 0.06
+bottom_radius = 0.01
+height = 0.4
+cap_top = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2jc5k"]
+radial_velocity_min = 0.2
+radial_velocity_max = 0.4
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.08
+scale_max = 0.1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6h84l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_02vb1"]
+seamless = true
+noise = SubResource("FastNoiseLite_6h84l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clhre"]
+render_priority = 0
+shader = ExtResource("3_8grlt")
+shader_parameter/root_color = Color(1, 0.75, 0.3, 1)
+shader_parameter/tip_color = Color(1, 0.03, 0.001, 1)
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0, 1)
+shader_parameter/fire_aperture = 0.22
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_02vb1")
+
+[sub_resource type="SphereMesh" id="SphereMesh_mnxa1"]
+material = SubResource("ShaderMaterial_clhre")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_57fgd"]
+radial_velocity_min = 0.4
+radial_velocity_max = 0.6
+gravity = Vector3(0, 0.5, 0)
+scale_min = 0.08
+scale_max = 0.1
 
 [node name="Raygun" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.80496, -1.00338, -1.51233)
@@ -12,3 +71,31 @@ fire_units_per_tick = 20
 
 [node name="big_candle" parent="." instance=ExtResource("2_tv8af")]
 transform = Transform3D(0.0381569, 0, 0, 0, 0.0300432, 0.0349069, 0, -0.0585507, 0.0179112, -0.0861979, 0.015294, 0.0707712)
+
+[node name="fire" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0897037, 0.447984, -0.447156)
+mesh = SubResource("CylinderMesh_wpx51")
+
+[node name="bullet" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0847721, 0.281602, -0.511997)
+emitting = false
+amount = 100
+visibility_aabb = AABB(0, 0, 0, 0.1, 0.1, 0.1)
+process_material = SubResource("ParticleProcessMaterial_2jc5k")
+draw_pass_1 = SubResource("SphereMesh_mnxa1")
+
+[node name="collision" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0847721, 0.281602, -0.511997)
+emitting = false
+amount = 200
+explosiveness = 0.7
+visibility_aabb = AABB(0, 0, 0, 0.1, 0.1, 0.1)
+process_material = SubResource("ParticleProcessMaterial_57fgd")
+draw_pass_1 = SubResource("SphereMesh_mnxa1")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_hvbbh")
+bus = &"SFX"
+
+[connection signal="firing" from="." to="bullet" method="set_emitting"]
+[connection signal="firing" from="." to="AudioStreamPlayer3D" method="_set_playing"]

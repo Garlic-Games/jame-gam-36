@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bpmg0tdctngli"
+path="res://.godot/imported/super fuego_pingpong.wav-e627f0dba060a6c9e310c314b1011b28.sample"
+
+[deps]
+
+source_file="res://Art/Sounds/super fuego_pingpong.wav"
+dest_files=["res://.godot/imported/super fuego_pingpong.wav-e627f0dba060a6c9e310c314b1011b28.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop_mode=3
+edit/loop_begin=0
+edit/loop_end=12000
+compress/mode=0

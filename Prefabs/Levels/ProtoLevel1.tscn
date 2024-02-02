@@ -240,9 +240,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.07954, -4.91615)
 mesh = SubResource("BoxMesh_8cxbi")
 skeleton = NodePath("../../Outside/InitZoneWalls")
 
-[node name="Heat" type="Node" parent="TowerGroup" node_paths=PackedStringArray("birds")]
+[node name="Heat" type="Node" parent="TowerGroup"]
 script = ExtResource("6_22cms")
-birds = [NodePath("../BirdContainer/bird"), NodePath("../BirdContainer/bird2")]
 
 [node name="BirdContainer" type="Node" parent="TowerGroup"]
 

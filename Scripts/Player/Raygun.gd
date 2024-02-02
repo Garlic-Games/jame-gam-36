@@ -2,6 +2,7 @@ extends Node3D
 class_name Raygun;
 
 signal on_ammo_changed;
+signal firing(isfiring: bool);
 
 @export_group("Weapon settings")
 @export var max_ammo : int = 200;
@@ -10,6 +11,7 @@ signal on_ammo_changed;
 @export var ray_distance : float = 50.0;
 @export var fire_units_per_tick : int = 2;
 @export var time_between_ticks : float = 0.1;
+@onready var collision_particle : GPUParticles3D = $collision;
 
 var current_ammo : int = 0;
 var is_firing : bool = false;
@@ -23,9 +25,11 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed("fire"):
 			is_firing = true;
+			firing.emit(true);
 		elif Input.is_action_just_released("fire"):
 			is_firing = false;
-
+			firing.emit(false);
+			collision_particle.emitting = false;
 
 func _init():
 	current_ammo = starting_ammo;
@@ -65,6 +69,8 @@ func detect_entity_in_sight():
 	var collision = get_world_3d().direct_space_state.intersect_ray(ray);
 	
 	if collision:
+		collision_particle.global_position = collision.position;
+		collision_particle.emitting = true;
 		if collision.collider.is_in_group("bird"):
 			collision.collider.get_parent().add_fire(fire_units_per_tick);
 

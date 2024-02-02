@@ -1,4 +1,5 @@
-extends Node3D
+class_name  Moai;
+extends StaticBody3D;
 
 @export var target: Node3D;
 @export var rotation_speed: float = 2;
@@ -26,6 +27,7 @@ var timer_floating : float = 0.0;
 var timer_shoot: float = shoot_period;
 
 signal bullet_shot;
+signal ouch;
 
 func _ready():
 	if obstacles && waypoints:
@@ -98,3 +100,5 @@ func _on_sight_area_body_entered(body):
 func _on_sight_area_body_exited(_body):
 	target = null;
 
+func moai_ouch():
+	ouch.emit();

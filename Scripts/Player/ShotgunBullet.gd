@@ -12,7 +12,10 @@ func _physics_process(_delta):
 	var collision = move_and_collide(velocity);
 
 	if collision:
-		if collision.get_collider().is_in_group("moai"):
+		var collider = collision.get_collider();
+		if collider.is_in_group("moai"):
+			var moai = collider as Moai;
+			moai.moai_ouch();
 			on_bullet_moai_collision.emit();
 			
 		print("bullet collided");

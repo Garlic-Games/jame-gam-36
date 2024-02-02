@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://d3hehxwyluyfm"]
+[gd_scene load_steps=55 format=3 uid="uid://d3hehxwyluyfm"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_n5lw0"]
 [ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_1uyik"]
@@ -13,6 +13,7 @@
 [ext_resource type="Material" path="res://Art/Materials/Paredes.tres" id="10_h2erx"]
 [ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="10_hbl1l"]
 [ext_resource type="Script" path="res://Scripts/Animations/fade.gd" id="11_w5rti"]
+[ext_resource type="AudioStream" uid="uid://dwxwkwcx6pani" path="res://Art/Music/ingame 1.wav" id="14_q61xe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv5mp"]
 sky_top_color = Color(0.333333, 0.670588, 0.968627, 1)
@@ -28,6 +29,9 @@ sky = SubResource("Sky_mouic")
 ambient_light_color = Color(0.713726, 0.713726, 0.713726, 1)
 ambient_light_sky_contribution = 0.15
 tonemap_mode = 2
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l6t3m"]
+data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1.9324, 1, -1, -1, 1, -1, -1, -1, -1, 1.9324, -1, -1, 1.9324, 1, -1, 1.9324, -1, -1, 1.9324, 1, 1, 1.9324, 1, -1, 1.9324, -1, -1, 1.9324, -1, 1, 1.9324, 1, 1, 1.9324, -1, 1, -1, 1, 1, 1.9324, 1, 1, 1.9324, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1.9324, -1, 1, 1.9324, -1, -1, -1, -1, -1, -1, -1, 1, 1.9324, -1, 1, 1.9324, 1, -1, -1, 1, 1, -1, 1, -1, 1.9324, 1, -1, 1.9324, 1, 1, -1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wstt2"]
 resource_name = "Arena"
@@ -65,9 +69,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kqbb0")
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l6t3m"]
-data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1.9324, 1, -1, -1, 1, -1, -1, -1, -1, 1.9324, -1, -1, 1.9324, 1, -1, 1.9324, -1, -1, 1.9324, 1, 1, 1.9324, 1, -1, 1.9324, -1, -1, 1.9324, -1, 1, 1.9324, 1, 1, 1.9324, -1, 1, -1, 1, 1, 1.9324, 1, 1, 1.9324, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1.9324, -1, 1, 1.9324, -1, -1, -1, -1, -1, -1, -1, 1, 1.9324, -1, 1, 1.9324, 1, -1, -1, 1, 1, -1, 1, -1, 1.9324, 1, -1, 1.9324, 1, 1, -1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks313"]
 resource_name = "Paredes"
@@ -515,6 +516,16 @@ shadow_enabled = true
 [node name="level1" type="Node3D" parent="Map"]
 transform = Transform3D(0.633287, 0, 0, 0, 0.633287, 0, 0, 0, 0.633287, 0, 0, 0)
 
+[node name="Ceiling" type="MeshInstance3D" parent="Map/level1"]
+transform = Transform3D(373.088, 0, 0, 0, 0.381202, 0, 0, 0, 538.379, -49.1047, 51.9359, 4.98157)
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map/level1/Ceiling"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/level1/Ceiling/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.8012, 0)
+shape = SubResource("ConcavePolygonShape3D_l6t3m")
+
 [node name="Floor" type="MeshInstance3D" parent="Map/level1"]
 transform = Transform3D(373.088, 0, 0, 0, 0.381202, 0, 0, 0, 538.379, -49.1047, 6.02364e-06, 4.98157)
 mesh = SubResource("ArrayMesh_81nxt")
@@ -708,7 +719,7 @@ transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("BoxShape3D_54jwb")
 
 [node name="PlatformB4" type="MeshInstance3D" parent="Map/level1"]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -23.4048, 10.9691, -43.6413)
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -23.4048, 9.77484, -43.6413)
 mesh = SubResource("BoxMesh_pychd")
 skeleton = NodePath("StaticBody3D")
 
@@ -932,3 +943,8 @@ transform = Transform3D(-0.484749, 0, -0.874654, 0, 1, 0, 0.874654, 0, -0.484749
 
 [node name="Node3D5" type="Node3D" parent="BirdsPoints/WaypointsD"]
 transform = Transform3D(-0.484749, 0, -0.874654, 0, 1, 0, 0.874654, 0, -0.484749, -11.3736, 8.5846, 3.99953)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_q61xe")
+autoplay = true
+bus = &"Music"
