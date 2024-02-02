@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pmdjvfrtdhgs"
-path.s3tc="res://.godot/imported/sand_texture.png-7e7a98b5643b666319b601ecad019f20.s3tc.ctex"
+path.s3tc="res://.godot/imported/sand_texture.png-fa581ada22f863fce0416ad884d32e39.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Art/Textures/sand_texture.png"
-dest_files=["res://.godot/imported/sand_texture.png-7e7a98b5643b666319b601ecad019f20.s3tc.ctex"]
+source_file="res://Art/Textures/environment/sand_texture.png"
+dest_files=["res://.godot/imported/sand_texture.png-fa581ada22f863fce0416ad884d32e39.s3tc.ctex"]
 
 [params]
 

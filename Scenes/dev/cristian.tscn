@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://u40l62v2dp8d" path="res://Prefabs/Obstacles/obstacle.tscn" id="3_n1cgf"]
 [ext_resource type="Script" path="res://Scripts/obstacle/obstacle_container.gd" id="3_veuxn"]
 [ext_resource type="Material" uid="uid://byasc07ch87b7" path="res://Art/Materials/Paredes.tres" id="8_1byqv"]
-[ext_resource type="Texture2D" uid="uid://pmdjvfrtdhgs" path="res://Art/Textures/sand_texture.png" id="8_78ltg"]
+[ext_resource type="Texture2D" uid="uid://pmdjvfrtdhgs" path="res://Art/Textures/environment/sand_texture.png" id="8_78ltg"]
 [ext_resource type="PackedScene" uid="uid://cdu1thohecrr2" path="res://Prefabs/UI/hud.tscn" id="8_cugii"]
 [ext_resource type="PackedScene" uid="uid://cstwwhxy36qli" path="res://Prefabs/Player/player.tscn" id="8_lsx88"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_1fs2k"]

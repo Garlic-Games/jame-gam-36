@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cdu1thohecrr2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="1_mbuvp"]
-[ext_resource type="Texture2D" uid="uid://bbxusvfufrntg" path="res://Art/Textures/crosshair.png" id="2_parm1"]
+[ext_resource type="Texture2D" uid="uid://bbxusvfufrntg" path="res://Art/Textures/hud/crosshair.png" id="2_4yk6h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ty8fe"]
 bg_color = Color(0, 0, 0, 0)
@@ -64,7 +64,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_parm1")
+texture = ExtResource("2_4yk6h")
 stretch_mode = 2
 
 [node name="Ammo" type="ProgressBar" parent="."]
