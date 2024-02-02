@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://f8u3qgcvkh0"]
+
+[ext_resource type="Script" path="res://Scripts/Gameplay/MusicFaderZone.gd" id="1_l3d3q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83jt2"]
+size = Vector3(10, 10, 10)
+
+[node name="MusicFaderZone" type="Area3D"]
+collision_layer = 128
+collision_mask = 2
+script = ExtResource("1_l3d3q")
+
+[node name="MusicFaderArea" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.7548, 0.821492, 17.7341)
+shape = SubResource("BoxShape3D_83jt2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

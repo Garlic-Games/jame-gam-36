@@ -1033,4 +1033,6 @@ stream = ExtResource("16_gs8cc")
 volume_db = -40.0
 bus = &"Music"
 
-[node name="MusicFade" parent="." instance=ExtResource("18_8688n")]
+[node name="MusicFade" parent="." node_paths=PackedStringArray("current_music", "next_music") instance=ExtResource("18_8688n")]
+current_music = NodePath("../MainMusic")
+next_music = NodePath("../FinalZoneMusic")
