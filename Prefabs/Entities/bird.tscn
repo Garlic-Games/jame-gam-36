@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cka4heni3dqxn"]
+[gd_scene load_steps=22 format=3 uid="uid://cka4heni3dqxn"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/bird.gd" id="1_5a6ki"]
 [ext_resource type="PackedScene" uid="uid://cq8e04rbyjl0j" path="res://Art/Models/bird.glb" id="1_26lmq"]
+[ext_resource type="Shader" path="res://Art/Shaders/fire.gdshader" id="3_5cg8s"]
+[ext_resource type="Texture2D" uid="uid://r4lymwruag3j" path="res://Art/Textures/smoke_particle/whitePuff00.png" id="4_8ao5u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m15lm"]
 bg_color = Color(0, 0, 0, 1)
@@ -24,6 +26,94 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4j6iy"]
 radius = 0.191776
 height = 1.37754
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_se03e"]
+resource_local_to_scene = true
+radial_velocity_min = 0.1
+radial_velocity_max = 0.2
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.1
+scale_max = 0.2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6h84l"]
+noise_type = 2
+frequency = 0.0219
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r4548"]
+seamless = true
+noise = SubResource("FastNoiseLite_6h84l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clhre"]
+render_priority = 0
+shader = ExtResource("3_5cg8s")
+shader_parameter/root_color = Color(1, 0.75, 0.3, 1)
+shader_parameter/tip_color = Color(1, 0.03, 0.001, 1)
+shader_parameter/fire_alpha = 0.6
+shader_parameter/fire_speed = Vector2(0, 1)
+shader_parameter/fire_aperture = 0.615
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_r4548")
+
+[sub_resource type="SphereMesh" id="SphereMesh_mndvl"]
+material = SubResource("ShaderMaterial_clhre")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l8mn3"]
+resource_local_to_scene = true
+radial_velocity_min = 0.5
+radial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7h7em"]
+render_priority = 0
+shader = ExtResource("3_5cg8s")
+shader_parameter/root_color = Color(0.0388496, 0.0177829, 6.01634e-09, 1)
+shader_parameter/tip_color = Color(0.419608, 0.419608, 0.419608, 1)
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0.5, 0)
+shader_parameter/fire_aperture = 0.72
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_r4548")
+
+[sub_resource type="SphereMesh" id="SphereMesh_06ql7"]
+material = SubResource("ShaderMaterial_7h7em")
+
+[sub_resource type="Curve" id="Curve_by5ja"]
+min_value = -2.0
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yqwwv"]
+curve = SubResource("Curve_by5ja")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ypy1h"]
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 3
+emission_box_extents = Vector3(0.2, 0.2, 0.2)
+direction = Vector3(0, 0, 0)
+angular_velocity_min = 0.1
+angular_velocity_max = 0.1
+orbit_velocity_min = 0.3
+orbit_velocity_max = 0.3
+orbit_velocity_curve = SubResource("CurveTexture_yqwwv")
+gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 1, 0.121569)
+anim_speed_max = 7.29
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03qk1"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.396078, 0.0705882, 1)
+albedo_texture = ExtResource("4_8ao5u")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_xle5x"]
+material = SubResource("StandardMaterial3D_03qk1")
 
 [node name="bird" instance=ExtResource("1_26lmq")]
 script = ExtResource("1_5a6ki")
@@ -76,3 +166,39 @@ texture = SubResource("ViewportTexture_c75oq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00309634, 0.0040853, 0.0867916)
 shape = SubResource("CapsuleShape3D_4j6iy")
+
+[node name="birdFire" type="GPUParticles3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0847721, -0.00137882, -0.0686851)
+emitting = false
+amount = 1
+lifetime = 2.0
+visibility_aabb = AABB(0, 0, 0, 0.1, 0.1, 0.1)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_se03e")
+draw_pass_1 = SubResource("SphereMesh_mndvl")
+
+[node name="explode" type="GPUParticles3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0847721, -0.00137882, -0.0686851)
+emitting = false
+amount = 200
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB(0, 0, 0, 0.1, 0.1, 0.1)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_l8mn3")
+draw_pass_1 = SubResource("SphereMesh_06ql7")
+
+[node name="explosionSmoke" type="GPUParticles3D" parent="." index="7"]
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+visibility_aabb = AABB(-0.1, -0.1, -0.1, 0.2, 0.2, 0.2)
+local_coords = true
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_ypy1h")
+draw_pass_1 = SubResource("QuadMesh_xle5x")
+
+[connection signal="finished" from="explode" to="." method="_on_explode_finished"]

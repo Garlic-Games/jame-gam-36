@@ -1,6 +1,6 @@
 extends Node3D
 
-signal on_bird_heat_changed;
+signal on_bird_heat_changed(heat: float);
 
 @export_group("Main menu settings")
 @export var main_menu_mode : bool = false;
@@ -15,11 +15,17 @@ signal on_bird_heat_changed;
 @export var waypointGroup: PathWaypointGroup;
 @export var Speed: float = 2.5;
 
+@onready var birdfire: GPUParticles3D = $birdFire;
+@onready var explosion: GPUParticles3D = $explode;
+@onready var explosionSmoke: GPUParticles3D = $explosionSmoke;
+@onready var armature: Node3D = $Armature;
+
 var current_fire_units : int = 0;
 var is_alive = true;
 
 var timer_heat_decay = 0.0;
 var timer_cooling = 0.0;
+
 
 var _seekNode: Node3D = null;
 var _lastDistance: float = 999999.9;
@@ -85,8 +91,13 @@ func add_fire(fire_units : int):
 
 	if current_fire_units < 0:
 		current_fire_units = 0;
+		birdfire.emitting = false;
+		birdfire.amount = 1;
 	else:
 		on_bird_heat_changed.emit(fire_units);
+		birdfire.emitting = true;
+		birdfire.amount = current_fire_units;
+
 		
 	$SubViewport/ProgressBar.value = current_fire_units;
 	
@@ -97,4 +108,11 @@ func add_fire(fire_units : int):
 
 func kill():
 	is_alive = false;
+	explode();
+
+func explode():
+	explosion.emitting = true;
+	explosionSmoke.emitting = true;
+
+func _on_explode_finished():
 	self.queue_free();

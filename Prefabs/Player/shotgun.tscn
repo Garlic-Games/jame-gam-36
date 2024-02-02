@@ -1,9 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://u7xsqi6rendp"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Shotgun.gd" id="1_tn8dk"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_77wo8"]
-size = Vector3(0.1, 0.1, 1)
+[ext_resource type="ArrayMesh" uid="uid://c1pi21h2jr2ha" path="res://Art/Models/rifle/rifle.res" id="2_evi0g"]
 
 [node name="Shotgun" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.80496, -1.00338, -1.51233)
@@ -11,6 +9,8 @@ script = ExtResource("1_tn8dk")
 bullet_speed = 0.01
 
 [node name="WeaponShape" type="MeshInstance3D" parent="."]
-mesh = SubResource("PrismMesh_77wo8")
+transform = Transform3D(-0.001, 0, -8.74228e-11, 0, 0.001, 0, 8.74228e-11, 0, -0.001, 0, 0, 0)
+mesh = ExtResource("2_evi0g")
 
 [node name="BulletHole" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.033735, -0.531616)
