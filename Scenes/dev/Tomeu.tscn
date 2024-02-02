@@ -88,12 +88,10 @@ mesh = SubResource("CylinderMesh_2xq7s")
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.99999, 0.00328964, -0.0031259, 0, 0.688836, 0.724918, 0.00453795, 0.72491, -0.688829, 0, 3.30005, 12.259)
 
-[node name="Portal" parent="." node_paths=PackedStringArray("exit") instance=ExtResource("3_454me")]
-exit = NodePath("../Portal2")
+[node name="Portal" parent="." instance=ExtResource("3_454me")]
 
-[node name="Portal2" parent="." node_paths=PackedStringArray("exit") instance=ExtResource("3_454me")]
+[node name="Portal2" parent="." instance=ExtResource("3_454me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.79283, 1.59998, -13.9227)
-exit = NodePath("../Portal")
 
 [node name="Moai" parent="." instance=ExtResource("4_4pfvb")]
 transform = Transform3D(0.716351, 0, -0.69774, 0, 1, 0, 0.69774, 0, 0.716351, -8.17692, 3.29931, -9.2211)

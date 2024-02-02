@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_sby1o"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.gd" id="2_deoer"]
+[ext_resource type="PackedScene" uid="uid://ddp0vm4acs7i1" path="res://Art/Models/male_body.tscn" id="2_ht0t0"]
 [ext_resource type="PackedScene" uid="uid://u7xsqi6rendp" path="res://Prefabs/Player/shotgun.tscn" id="3_736fj"]
 [ext_resource type="Script" path="res://Scripts/Player/MouseCaptureInput.gd" id="3_g3i40"]
 [ext_resource type="PackedScene" uid="uid://bdnl853o6t7g4" path="res://Prefabs/Player/hook.tscn" id="4_cpwxe"]
@@ -13,8 +14,6 @@
 radius = 0.778499
 height = 2.77467
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_3pajm"]
-
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1759, 0)
 collision_layer = 2
@@ -25,8 +24,8 @@ jump_speed = 9.0
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_1j2vr")
 
-[node name="PlayerShape" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_3pajm")
+[node name="Model" parent="." instance=ExtResource("2_ht0t0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902616, -0.468709)
