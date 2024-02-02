@@ -490,7 +490,7 @@ fade_rectangle = NodePath("UI/Transition/Fade")
 
 [node name="Heat" type="Node" parent="." node_paths=PackedStringArray("birds")]
 script = ExtResource("2_7pvfv")
-max_heat = 50
+max_heat = 1200
 birds = NodePath("../Birds")
 
 [node name="Birds" type="Node" parent="."]
@@ -805,6 +805,7 @@ skeleton = NodePath("StaticBody3D")
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/level1/PlatformB4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04968, 0)
 shape = SubResource("BoxShape3D_54jwb")
 
 [node name="PlatformC1" type="MeshInstance3D" parent="Map/level1"]
