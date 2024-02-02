@@ -502,9 +502,11 @@ layer = 128
 
 [node name="ClickAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_l4y4e")
+bus = &"SFX"
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_o2da5")
+bus = &"Music"
 
 [connection signal="mouse_entered" from="Menu/Main/VBoxContainer/StartGame" to="." method="on_button_hovered"]
 [connection signal="pressed" from="Menu/Main/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]

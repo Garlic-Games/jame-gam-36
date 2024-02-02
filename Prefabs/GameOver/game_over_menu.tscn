@@ -127,6 +127,7 @@ vertical_alignment = 1
 
 [node name="ClickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hjwvf")
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="MainMenu" to="." method="_on_button_hovered"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
