@@ -12,8 +12,9 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventKey and event.is_action_pressed("esc"):
-		toggle_pause();
+	if GameStateMachine.currentState == GameStateMachine.GAME_STATE.PLAYING or GameStateMachine.currentState == null:
+		if event is InputEventKey and event.is_action_pressed("esc"):
+			toggle_pause();
 
 
 func toggle_pause():
@@ -84,8 +85,3 @@ func _on_back_pressed():
 	click_audio.play();
 	$Settings.hide();
 	$Main.show();
-
-
-func _on_continue_presseda():
-	print("XD")
-	pass # Replace with function body.
