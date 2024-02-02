@@ -21,6 +21,8 @@ func _ready():
 	tween_transition.tween_property(fade_rectangle, "color:a", 0.0, 2.5);
 	
 	mainMusic.play();
+	
+	tutorial.spawn_info(TutorialInfo.InformationState.FIRST);
 
 
 func EndGame():
