@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://d3hehxwyluyfm"]
+[gd_scene load_steps=61 format=3 uid="uid://d3hehxwyluyfm"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_n5lw0"]
 [ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_1uyik"]
@@ -13,9 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ctuogdlqakgo4" path="res://Prefabs/Portal/portal.tscn" id="9_7ppj4"]
 [ext_resource type="Material" uid="uid://cd16swm5tbiat" path="res://Art/Materials/Arena.tres" id="9_b3mel"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_scw40"]
-[ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="10_hbl1l"]
 [ext_resource type="Texture2D" uid="uid://dayv1qkrkkmck" path="res://Art/Textures/environment/brick_wall.png" id="10_ssx3t"]
-[ext_resource type="Script" path="res://Scripts/Animations/fade.gd" id="11_w5rti"]
 [ext_resource type="AudioStream" uid="uid://dwxwkwcx6pani" path="res://Art/Music/ingame 1.wav" id="14_q61xe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv5mp"]
@@ -479,12 +477,13 @@ size = Vector3(50, 30, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0txc0"]
 size = Vector3(3, 30, 50)
 
-[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("gameOverMenu", "heat", "portal")]
+[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("gameOverMenu", "heat", "portal", "fade_rectangle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120588, -0.017498, 0.0261469)
 script = ExtResource("1_n5lw0")
 gameOverMenu = NodePath("UI/GameOverMenu")
 heat = NodePath("Heat")
 portal = NodePath("Map/level1/Portal")
+fade_rectangle = NodePath("UI/Transition/Fade")
 
 [node name="Heat" type="Node" parent="." node_paths=PackedStringArray("birds")]
 script = ExtResource("2_7pvfv")
@@ -565,6 +564,16 @@ player = NodePath("../../Player")
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_7otix")]
 
 [node name="GameOverMenu" parent="UI" instance=ExtResource("2_1uyik")]
+
+[node name="Transition" type="CanvasLayer" parent="UI"]
+
+[node name="Fade" type="ColorRect" parent="UI/Transition"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Map" type="Node" parent="."]
 
@@ -930,11 +939,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7803, 11.4236, -12.7836)
 
 [node name="Waypoint4" type="Node3D" parent="MoaiPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8288, 9.07156, 15.5276)
-
-[node name="Transitions" type="Node" parent="."]
-
-[node name="Fade" parent="Transitions" instance=ExtResource("10_hbl1l")]
-script = ExtResource("11_w5rti")
 
 [node name="BirdsPoints" type="Node" parent="."]
 

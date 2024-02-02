@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var menu_music : AudioStreamPlayer = null;
 @export var click_audio : AudioStreamPlayer = null;
 @export var camera : Camera3D = null;
 @export var camera_waypoints : Node = null;
@@ -14,6 +15,8 @@ func _ready():
 		waypoints_transforms.append(node.global_transform);
 
 	camera.transform = waypoints_transforms[0];
+	
+	menu_music.play();
 
 
 func _on_start_game_pressed():

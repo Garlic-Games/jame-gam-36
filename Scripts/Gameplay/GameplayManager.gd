@@ -4,12 +4,16 @@ class_name GameplayManager;
 @export var gameOverMenu: GameOverManager;
 @export var heat : Node = null;
 @export var portal : Node3D = null;
+@export var fade_rectangle : ColorRect = null;
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
 	GameStateMachine.connect("stateChange", onGameStateChange);
 	heat.connect("on_heat_filled", turn_on_portal);
 	portal.connect("on_portal_entered", EndGame);
+	
+	var tween_animation = get_tree().create_tween();
+	tween_animation.tween_property(fade_rectangle, "color:a", 0.0, 2.5);
 
 
 func EndGame():
