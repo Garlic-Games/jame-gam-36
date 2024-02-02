@@ -23,6 +23,10 @@ GameStateMachine="*res://Scripts/Autoloads/GameStateMachine.gd"
 
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Rewarned"
+
 [input]
 
 move_left={

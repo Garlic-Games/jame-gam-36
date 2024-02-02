@@ -1,7 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://5hx8hm5f7p25"]
+[gd_scene load_steps=42 format=3 uid="uid://5hx8hm5f7p25"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_cqyjv"]
 [ext_resource type="Script" path="res://Scripts/mechanics/heat.gd" id="2_es0kn"]
+[ext_resource type="PackedScene" path="res://Prefabs/UI/tutorial_message.tscn" id="2_t4yxn"]
 [ext_resource type="PackedScene" uid="uid://cka4heni3dqxn" path="res://Prefabs/Entities/bird.tscn" id="3_ns8ro"]
 [ext_resource type="Script" path="res://Scripts/obstacle/obstacle_container.gd" id="4_yhkk6"]
 [ext_resource type="PackedScene" uid="uid://u40l62v2dp8d" path="res://Prefabs/Obstacles/obstacle.tscn" id="5_vm7av"]
@@ -13,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://dayv1qkrkkmck" path="res://Art/Textures/environment/brick_wall.png" id="11_clpu2"]
 [ext_resource type="PackedScene" uid="uid://08jweorp3rjx" path="res://Art/Models/Colisseum/Arch.tscn" id="12_5lkxx"]
 [ext_resource type="Material" uid="uid://byasc07ch87b7" path="res://Art/Materials/Paredes.tres" id="13_bcolp"]
+[ext_resource type="Script" path="res://Scripts/Mechanics/spawn_on_heat.gd" id="13_oqpc6"]
 [ext_resource type="PackedScene" uid="uid://j5u7is6e7dfq" path="res://Art/Models/Colisseum/strairs.tscn" id="14_58lxd"]
 [ext_resource type="PackedScene" uid="uid://cstwwhxy36qli" path="res://Prefabs/Player/player.tscn" id="15_w8sal"]
+[ext_resource type="Script" path="res://Scripts/mechanics/spawn_on_heat.gd" id="16_0raxa"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="16_l8mnj"]
 [ext_resource type="Script" path="res://Scripts/Entities/WaypointGroup.gd" id="17_hennj"]
 [ext_resource type="AudioStream" uid="uid://dwxwkwcx6pani" path="res://Art/Music/ingame 1.wav" id="18_gu3f8"]
@@ -172,15 +175,19 @@ size = Vector3(20, 1, 20)
 material = ExtResource("13_bcolp")
 size = Vector3(20, 1, 20)
 
-[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("mainMusic", "endMusic", "gameOverMenu", "heat", "portal", "fade_rectangle")]
+[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("mainMusic", "finalMusic", "endMusic", "tutorial", "gameOverMenu", "heat", "portal", "fade_rectangle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120588, -0.017498, 0.0261469)
 script = ExtResource("1_cqyjv")
 mainMusic = NodePath("MainMusic")
+finalMusic = NodePath("FinalZoneMusic")
 endMusic = NodePath("EndMusic")
+tutorial = NodePath("TutorialMessage")
 gameOverMenu = NodePath("UI/GameOverMenu")
 heat = NodePath("Heat")
 portal = NodePath("Portal")
 fade_rectangle = NodePath("UI/Transition/Fade")
+
+[node name="TutorialMessage" parent="." instance=ExtResource("2_t4yxn")]
 
 [node name="Heat" type="Node" parent="." node_paths=PackedStringArray("birds")]
 script = ExtResource("2_es0kn")
@@ -409,8 +416,11 @@ transform = Transform3D(0.0558027, 0, 1.49896, 0, 1.5, 0, -1.49896, 0, 0.0558027
 [node name="arch2" parent="Map/LevelDefinitive/SecondZone" instance=ExtResource("12_5lkxx")]
 transform = Transform3D(0.00426714, 0, -1.49999, 0, 1.5, 0, 1.49999, 0, 0.00426714, 26.0931, 0.136767, 3.94131)
 
-[node name="Platform" type="StaticBody3D" parent="Map/LevelDefinitive/SecondZone"]
+[node name="Platform" type="StaticBody3D" parent="Map/LevelDefinitive/SecondZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93795, 8.26469, 4.60116)
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 200
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/SecondZone/Platform"]
 shape = SubResource("BoxShape3D_2b212")
@@ -421,32 +431,41 @@ mesh = SubResource("BoxMesh_heimf")
 [node name="strairs2" parent="Map/LevelDefinitive/SecondZone" instance=ExtResource("14_58lxd")]
 transform = Transform3D(4, 0, 0, 0, 3, 0, 0, 0, 1, -6.69208, 0.341162, -8.45993)
 
-[node name="The Pedestal 1" type="MeshInstance3D" parent="Map/LevelDefinitive/SecondZone"]
+[node name="Pedestal" type="StaticBody3D" parent="Map/LevelDefinitive/SecondZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.32, 0, 0, 0, 1, 0, 0, 0, 0.32, 4.78274, 5.80552, 3.69838)
-mesh = SubResource("ArrayMesh_h8hhb")
-skeleton = NodePath("")
+script = ExtResource("16_0raxa")
+heat = NodePath("../../../../Heat")
+heat_threshold = 200
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Map/LevelDefinitive/SecondZone/The Pedestal 1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/SecondZone/The Pedestal 1/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/SecondZone/Pedestal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675154, 0)
 shape = SubResource("CylinderShape3D_u8aqo")
+
+[node name="The Pedestal 1" type="MeshInstance3D" parent="Map/LevelDefinitive/SecondZone/Pedestal"]
+mesh = SubResource("ArrayMesh_h8hhb")
+skeleton = NodePath("")
 
 [node name="ThirdZone" type="Node3D" parent="Map/LevelDefinitive"]
 
-[node name="The Pedestal 1" type="MeshInstance3D" parent="Map/LevelDefinitive/ThirdZone"]
+[node name="Pedestal" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.32, 0, 0, 0, 1, 0, 0, 0, 0.32, 4.79073, 12.5844, 3.69838)
-mesh = SubResource("ArrayMesh_h8hhb")
-skeleton = NodePath("")
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 700
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone/The Pedestal 1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/The Pedestal 1/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/Pedestal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675154, 0)
 shape = SubResource("CylinderShape3D_u8aqo")
 
-[node name="Platform1" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone"]
+[node name="The Pedestal 1" type="MeshInstance3D" parent="Map/LevelDefinitive/ThirdZone/Pedestal"]
+mesh = SubResource("ArrayMesh_h8hhb")
+skeleton = NodePath("")
+
+[node name="Platform1" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 14.7442, 14.2783, 3.75208)
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 700
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/Platform1"]
 shape = SubResource("BoxShape3D_2b212")
@@ -454,8 +473,11 @@ shape = SubResource("BoxShape3D_2b212")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/LevelDefinitive/ThirdZone/Platform1"]
 mesh = SubResource("BoxMesh_heimf")
 
-[node name="Platform2" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone"]
+[node name="Platform2" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.13336, 14.2783, -6.15561)
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 700
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/Platform2"]
 shape = SubResource("BoxShape3D_2b212")
@@ -463,8 +485,11 @@ shape = SubResource("BoxShape3D_2b212")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/LevelDefinitive/ThirdZone/Platform2"]
 mesh = SubResource("BoxMesh_heimf")
 
-[node name="Platform3" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone"]
+[node name="Platform3" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.03631, 14.2783, 13.1529)
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 700
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/Platform3"]
 shape = SubResource("BoxShape3D_2b212")
@@ -472,8 +497,11 @@ shape = SubResource("BoxShape3D_2b212")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/LevelDefinitive/ThirdZone/Platform3"]
 mesh = SubResource("BoxMesh_heimf")
 
-[node name="Platform4" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone"]
+[node name="Platform4" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.8827, 14.2783, 4.60116)
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 700
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/Platform4"]
 shape = SubResource("BoxShape3D_2b212")
@@ -481,8 +509,11 @@ shape = SubResource("BoxShape3D_2b212")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/LevelDefinitive/ThirdZone/Platform4"]
 mesh = SubResource("BoxMesh_heimf")
 
-[node name="Platform5" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone"]
+[node name="Platform5" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 14.7442, 11.5119, -6.56436)
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 700
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/Platform5"]
 shape = SubResource("BoxShape3D_2b212")
@@ -490,8 +521,11 @@ shape = SubResource("BoxShape3D_2b212")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/LevelDefinitive/ThirdZone/Platform5"]
 mesh = SubResource("BoxMesh_heimf")
 
-[node name="Platform6" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone"]
+[node name="Platform6" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.70903, 11.5119, -6.56436)
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 700
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/Platform6"]
 shape = SubResource("BoxShape3D_2b212")
@@ -499,8 +533,11 @@ shape = SubResource("BoxShape3D_2b212")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/LevelDefinitive/ThirdZone/Platform6"]
 mesh = SubResource("BoxMesh_heimf")
 
-[node name="Platform7" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone"]
+[node name="Platform7" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.70903, 11.5119, 15.7633)
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 700
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/Platform7"]
 shape = SubResource("BoxShape3D_2b212")
@@ -508,8 +545,11 @@ shape = SubResource("BoxShape3D_2b212")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map/LevelDefinitive/ThirdZone/Platform7"]
 mesh = SubResource("BoxMesh_heimf")
 
-[node name="Platform8" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone"]
+[node name="Platform8" type="StaticBody3D" parent="Map/LevelDefinitive/ThirdZone" node_paths=PackedStringArray("heat")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 13.8994, 11.5119, 15.7633)
+script = ExtResource("13_oqpc6")
+heat = NodePath("../../../../Heat")
+heat_threshold = 700
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/LevelDefinitive/ThirdZone/Platform8"]
 shape = SubResource("BoxShape3D_2b212")

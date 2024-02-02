@@ -10,6 +10,6 @@ func _ready():
 	collision_layer = 0;
 
 func spawn_item():
-	if heat_threshold > heat.current_heat:
+	if heat_threshold >= heat.current_heat:
 		show();
 		collision_layer = desired_collision_layer;
