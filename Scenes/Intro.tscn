@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://lwdm327j0ytk"]
 
 [ext_resource type="Script" path="res://Scripts/Intro/intro_animation.gd" id="1_7cccr"]
-[ext_resource type="PackedScene" uid="uid://bmejbh567cap8" path="res://Art/Models/big_candle.glb" id="2_yi6ea"]
+[ext_resource type="PackedScene" uid="uid://bmejbh567cap8" path="res://Art/Models/candles/big_candle.glb" id="2_yi6ea"]
 [ext_resource type="Material" uid="uid://cd16swm5tbiat" path="res://Art/Materials/Arena.tres" id="3_w6rsx"]
 [ext_resource type="Material" uid="uid://byasc07ch87b7" path="res://Art/Materials/Paredes.tres" id="4_q612i"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="5_u8a1r"]
@@ -25,7 +25,7 @@ radial_segments = 6
 script = ExtResource("1_7cccr")
 label_subtitles = NodePath("2D/Subtitles")
 fade_rectangle = NodePath("2D/FadeRect")
-raygun = NodePath("Raygun")
+raygun = NodePath("")
 raygun_target_transform = NodePath("RaygunFinalTransform")
 
 [node name="Camera3D" type="Camera3D" parent="."]

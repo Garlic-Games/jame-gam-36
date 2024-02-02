@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://blmbawvdb5fv3"
-path="res://.godot/imported/candle.glb-035ce9303062613f51231614f2d4e108.scn"
+uid="uid://c2jdrk7ux58mf"
+path="res://.godot/imported/portal.glb-95f030b5652b5e8e3052a262e2200ba8.scn"
 
 [deps]
 
-source_file="res://Art/Models/candle.glb"
-dest_files=["res://.godot/imported/candle.glb-035ce9303062613f51231614f2d4e108.scn"]
+source_file="res://Art/Models/portal/portal.glb"
+dest_files=["res://.godot/imported/portal.glb-95f030b5652b5e8e3052a262e2200ba8.scn"]
 
 [params]
 
@@ -17,7 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
-meshes/ensure_tangents=false
+meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://d3hehxwyluyfm"]
+[gd_scene load_steps=63 format=3 uid="uid://d3hehxwyluyfm"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_n5lw0"]
 [ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_1uyik"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://u40l62v2dp8d" path="res://Prefabs/Obstacles/obstacle.tscn" id="5_cm0v1"]
 [ext_resource type="PackedScene" uid="uid://cdu1thohecrr2" path="res://Prefabs/UI/hud.tscn" id="6_5eabv"]
 [ext_resource type="PackedScene" uid="uid://grnnbu2xcyt2" path="res://Prefabs/Menu/pause_menu.tscn" id="8_7otix"]
+[ext_resource type="PackedScene" uid="uid://ctuogdlqakgo4" path="res://Prefabs/Portal/portal.tscn" id="9_7ppj4"]
 [ext_resource type="Material" uid="uid://cd16swm5tbiat" path="res://Art/Materials/Arena.tres" id="9_b3mel"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_scw40"]
 [ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="10_hbl1l"]
@@ -576,6 +577,9 @@ shadow_enabled = true
 
 [node name="level1" type="Node3D" parent="Map"]
 transform = Transform3D(0.633287, 0, 0, 0, 0.633287, 0, 0, 0, 0.633287, 0, 0, 0)
+
+[node name="Portal" parent="Map/level1" instance=ExtResource("9_7ppj4")]
+transform = Transform3D(-2.59269e-07, 0, -5.93138, 0, 5.93138, 0, 5.93138, 0, -2.59269e-07, 22.8268, 9.24052, 28.8029)
 
 [node name="Ceiling" type="MeshInstance3D" parent="Map/level1"]
 transform = Transform3D(373.088, 0, 0, 0, 0.381202, 0, 0, 0, 538.379, -49.1047, 51.9359, 4.98157)

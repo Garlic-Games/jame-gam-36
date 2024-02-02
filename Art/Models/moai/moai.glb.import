@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dipbu4ku1tjo6"
-path="res://.godot/imported/moai.glb-4851f1ff35d0ea6c37d40bad495ba3ed.scn"
+path="res://.godot/imported/moai.glb-d961170187a20ed93bc184ad94e8c0af.scn"
 
 [deps]
 
-source_file="res://Art/Models/moai.glb"
-dest_files=["res://.godot/imported/moai.glb-4851f1ff35d0ea6c37d40bad495ba3ed.scn"]
+source_file="res://Art/Models/moai/moai.glb"
+dest_files=["res://.godot/imported/moai.glb-d961170187a20ed93bc184ad94e8c0af.scn"]
 
 [params]
 
