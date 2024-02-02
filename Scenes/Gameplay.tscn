@@ -919,7 +919,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412617, 9.40481, 74.3486)
 shape = SubResource("BoxShape3D_0txc0")
 
 [node name="Player" parent="." instance=ExtResource("3_iujbc")]
-transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 5.47007, 1.95274, 18.2983)
+transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 27.5891, 1.95274, -0.000249397)
 
 [node name="Moai" parent="." node_paths=PackedStringArray("target", "obstacles", "waypoints") instance=ExtResource("9_scw40")]
 transform = Transform3D(1.88564, 0, 0, 0, 1.88564, 0, 0, 0, 1.88564, 4.59382, 6.8981, -10.2277)
