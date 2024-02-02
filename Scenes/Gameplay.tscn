@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://d3hehxwyluyfm"]
+[gd_scene load_steps=62 format=3 uid="uid://d3hehxwyluyfm"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_n5lw0"]
 [ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_1uyik"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_scw40"]
 [ext_resource type="Texture2D" uid="uid://dayv1qkrkkmck" path="res://Art/Textures/environment/brick_wall.png" id="10_ssx3t"]
 [ext_resource type="AudioStream" uid="uid://dwxwkwcx6pani" path="res://Art/Music/ingame 1.wav" id="14_q61xe"]
+[ext_resource type="AudioStream" uid="uid://bei850m11hqmt" path="res://Art/Music/menu_music.mp3" id="16_gs8cc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv5mp"]
 sky_top_color = Color(0.333333, 0.670588, 0.968627, 1)
@@ -477,9 +478,11 @@ size = Vector3(50, 30, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0txc0"]
 size = Vector3(3, 30, 50)
 
-[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("gameOverMenu", "heat", "portal", "fade_rectangle")]
+[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("mainMusic", "endMusic", "gameOverMenu", "heat", "portal", "fade_rectangle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120588, -0.017498, 0.0261469)
 script = ExtResource("1_n5lw0")
+mainMusic = NodePath("MainMusic")
+endMusic = NodePath("EndMusic")
 gameOverMenu = NodePath("UI/GameOverMenu")
 heat = NodePath("Heat")
 portal = NodePath("Map/level1/Portal")
@@ -487,7 +490,7 @@ fade_rectangle = NodePath("UI/Transition/Fade")
 
 [node name="Heat" type="Node" parent="." node_paths=PackedStringArray("birds")]
 script = ExtResource("2_7pvfv")
-max_heat = 1200
+max_heat = 50
 birds = NodePath("../Birds")
 
 [node name="Birds" type="Node" parent="."]
@@ -916,7 +919,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412617, 9.40481, 74.3486)
 shape = SubResource("BoxShape3D_0txc0")
 
 [node name="Player" parent="." instance=ExtResource("3_iujbc")]
-transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 27.5557, 1.95274, -0.194143)
+transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 5.47007, 1.95274, 18.2983)
 
 [node name="Moai" parent="." node_paths=PackedStringArray("target", "obstacles", "waypoints") instance=ExtResource("9_scw40")]
 transform = Transform3D(1.88564, 0, 0, 0, 1.88564, 0, 0, 0, 1.88564, 4.59382, 6.8981, -10.2277)
@@ -1014,7 +1017,10 @@ transform = Transform3D(-0.484749, 0, -0.874654, 0, 1, 0, 0.874654, 0, -0.484749
 [node name="Node3D5" type="Node3D" parent="BirdsPoints/WaypointsD"]
 transform = Transform3D(-0.484749, 0, -0.874654, 0, 1, 0, 0.874654, 0, -0.484749, -11.3736, 8.5846, 3.99953)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_q61xe")
-autoplay = true
 bus = &"Music"
+
+[node name="EndMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_gs8cc")
+volume_db = -40.0
