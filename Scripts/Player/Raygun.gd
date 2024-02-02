@@ -25,7 +25,8 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed("fire"):
 			is_firing = true;
-			firing.emit(true);
+			if current_ammo > 0:
+				firing.emit(true);
 		elif Input.is_action_just_released("fire"):
 			is_firing = false;
 			firing.emit(false);
