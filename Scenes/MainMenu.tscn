@@ -441,8 +441,45 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Rows" type="HSplitContainer" parent="Menu/Credits/VBoxContainer"]
+[node name="GameDev" type="Label" parent="Menu/Credits/VBoxContainer"]
+z_index = -1
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 30
+text = "Game developed by:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu/Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_8n75w")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center][url=https://bocdagla.itch.io/]Bocdagla[/url]  [url=https://nanocirs.itch.io/]Nanocirs[/url]  [url=https://soteck.itch.io/]Soteck[/url]  [url=https://granmogul.itch.io/]Granmogul[/url]"
+fit_content = true
+
+[node name="GameDev3" type="Label" parent="Menu/Credits/VBoxContainer"]
+z_index = -1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_8n75w")
+theme_override_font_sizes/font_size = 16
+text = "
+Click audio: lebaston100
+Wall texture: Textures4Photoshop 
+Font: New Era Casual (Grandoplex Productions)
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Back" type="Button" parent="Menu/Credits"]
 anchors_preset = 3
