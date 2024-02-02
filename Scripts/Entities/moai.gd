@@ -89,7 +89,6 @@ func shoot(current_target):
 
 func go_next_waypoint():
 	if waypoint_index + 1 < positions.size():
-		obstacles.get_children()[waypoint_index].disconnect("on_obstacle_cleared", go_next_waypoint);
 		waypoint_index += 1;
 		position = positions[waypoint_index];
 
