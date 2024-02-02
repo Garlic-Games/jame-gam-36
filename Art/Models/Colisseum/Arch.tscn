@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://08jweorp3rjx"]
+
+[ext_resource type="PackedScene" uid="uid://bvg8n4vhccxdb" path="res://Art/Models/arch.glb" id="1_yan6u"]
+
+[node name="arch" instance=ExtResource("1_yan6u")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

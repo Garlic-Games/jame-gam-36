@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://j5u7is6e7dfq"]
+
+[ext_resource type="PackedScene" uid="uid://d3ydb73pf23ly" path="res://Art/Models/strairs.glb" id="1_mkggg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onui7"]
+size = Vector3(3.53101, 2.00433, 3.39209)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oeflv"]
+size = Vector3(0.342499, 2.8629, 1)
+
+[node name="strairs" instance=ExtResource("1_mkggg")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7501, -0.013031, -1.66528)
+shape = SubResource("BoxShape3D_onui7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cube/StaticBody3D" index="1"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 4.18177, -0.237052, 0)
+shape = SubResource("BoxShape3D_oeflv")
