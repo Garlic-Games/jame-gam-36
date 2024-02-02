@@ -511,10 +511,11 @@ size = Vector3(50, 30, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0txc0"]
 size = Vector3(3, 30, 50)
 
-[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("mainMusic", "endMusic", "tutorial", "gameOverMenu", "heat", "portal", "fade_rectangle")]
+[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("mainMusic", "finalMusic", "endMusic", "tutorial", "gameOverMenu", "heat", "portal", "fade_rectangle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120588, -0.017498, 0.0261469)
 script = ExtResource("1_n5lw0")
 mainMusic = NodePath("MainMusic")
+finalMusic = NodePath("FinalZoneMusic")
 endMusic = NodePath("EndMusic")
 tutorial = NodePath("UI/TutorialMessage")
 gameOverMenu = NodePath("UI/GameOverMenu")

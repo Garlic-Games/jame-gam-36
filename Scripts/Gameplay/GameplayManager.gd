@@ -2,6 +2,7 @@ extends Node3D
 class_name GameplayManager;
 
 @export var mainMusic : AudioStreamPlayer = null;
+@export var finalMusic : AudioStreamPlayer = null;
 @export var endMusic : AudioStreamPlayer = null;
 @export var tutorial : CanvasLayer = null;
 @export var gameOverMenu: GameOverManager;
@@ -27,6 +28,7 @@ func _ready():
 func EndGame():
 	GameStateMachine.changeState(GameStateMachine.GAME_STATE.GAME_OVER);
 	mainMusic.stop();
+	finalMusic.stop();
 	endMusic.play();
 	var tween_music = get_tree().create_tween();
 	tween_music.tween_property(endMusic, "volume_db", -10.0, 1.5);
