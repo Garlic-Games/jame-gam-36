@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://lwdm327j0ytk"]
+[gd_scene load_steps=10 format=3 uid="uid://lwdm327j0ytk"]
 
+[ext_resource type="Script" path="res://Scripts/Intro/intro_animation.gd" id="1_0sy0t"]
 [ext_resource type="Material" uid="uid://cd16swm5tbiat" path="res://Art/Materials/Arena.tres" id="1_hvvfj"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="1_yq5l5"]
 [ext_resource type="Material" uid="uid://byasc07ch87b7" path="res://Art/Materials/Paredes.tres" id="2_ynlib"]
+[ext_resource type="PackedScene" uid="uid://bmejbh567cap8" path="res://Art/Models/big_candle.glb" id="2_yy0bk"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_orxv4"]
 size = Vector3(30, 1, 30)
@@ -19,19 +21,25 @@ metallic_specular = 0.25
 material = SubResource("StandardMaterial3D_drphg")
 radial_segments = 6
 
-[node name="LevelAnim" type="Node3D"]
+[node name="LevelAnim" type="Node3D" node_paths=PackedStringArray("label_subtitles", "fade_rectangle")]
+script = ExtResource("1_0sy0t")
+label_subtitles = NodePath("2D/Subtitles")
+fade_rectangle = NodePath("2D/FadeRect")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.905406, -0.424547, 0, 0.424547, 0.905406, 0, 1.29121, 1.01943)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.987653, -0.152549, -0.0356402, 0.118154, 0.87476, -0.469931, 0.102864, 0.459918, 0.881983, -2.38419e-07, 0.755835, -0.416838)
-light_energy = 0.961
+light_energy = 1.416
 light_size = 0.535
 spot_range = 6.683
 spot_attenuation = 1.27456
 spot_angle = 55.47
 spot_angle_attenuation = 1.93187
+
+[node name="Raygun" parent="." instance=ExtResource("2_yy0bk")]
+transform = Transform3D(0.0381569, 0, 0, 0, 0.0300432, 0.0349069, 0, -0.0585507, 0.0179112, 0.403129, 3.06456, -2.98464)
 
 [node name="Suelos" type="Node" parent="."]
 
@@ -76,9 +84,24 @@ transform = Transform3D(2.58448, 0, 0, 0, 1.87231, -2.25942e-07, 0, -1.63683e-07
 mesh = SubResource("CylinderMesh_nk6le")
 
 [node name="Moai" parent="." instance=ExtResource("1_yq5l5")]
-transform = Transform3D(-0.375199, -0.0155303, -1.25493, -0.0268343, 1.30961, -0.00818401, 1.25474, 0.0233639, -0.375431, 0.0648187, 3.19921, -2.16578)
+transform = Transform3D(-0.222462, -0.0155303, -1.29079, -0.0256633, 1.30961, -0.0113338, 1.29062, 0.0233639, -0.222715, 0.0648187, 3.19921, -2.16578)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Moai"]
+transform = Transform3D(1, 3.17186e-08, -9.67375e-18, -3.17186e-08, 1, -6.09974e-10, -9.67379e-18, 6.09974e-10, 1, 0.490246, -0.0601659, -0.913558)
+light_color = Color(1, 0.564706, 0, 1)
+light_energy = 3.739
+light_size = 0.337
+omni_range = 1.14641
 
 [node name="2D" type="Node" parent="."]
+
+[node name="FadeRect" type="ColorRect" parent="2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="UpperBar" type="ColorRect" parent="2D"]
 anchors_preset = 5
@@ -100,3 +123,18 @@ offset_right = 576.0
 offset_bottom = 647.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Subtitles" type="Label" parent="2D"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -354.0
+offset_top = -98.0
+offset_right = 354.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 19
+horizontal_alignment = 1
