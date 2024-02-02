@@ -12,7 +12,8 @@ class_name GameplayManager;
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED;
 	GameStateMachine.connect("stateChange", onGameStateChange);
-	heat.connect("on_heat_filled", turn_on_portal);
+	tutorial.connect("on_last_message_received", turn_on_portal);
+	heat.connect("on_heat_filled", spawn_last_message);
 	portal.connect("on_portal_entered", EndGame);
 	
 	var tween_transition = get_tree().create_tween();
@@ -41,6 +42,8 @@ func onGameStateChange(state, _oldState):
 	else:
 		gameOverMenu.hide();
 
+func spawn_last_message():
+	tutorial.spawn_info(TutorialInfo.InformationState.LAST);
 
 func turn_on_portal():
 	portal.turn_on();
