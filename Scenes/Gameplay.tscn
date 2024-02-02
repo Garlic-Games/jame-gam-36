@@ -864,7 +864,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53393, 6.89437, -10.0677)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9653, 7.80279, -5.5714)
 
 [node name="Waypoint3" type="Node3D" parent="MoaiPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7803, 9.66611, -12.7836)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7803, 10.8954, -12.7836)
 
 [node name="Waypoint4" type="Node3D" parent="MoaiPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8288, 9.07156, 15.5276)
