@@ -21,7 +21,7 @@ func _ready():
 	
 	mainMusic.play();
 	
-	tutorial.spawn_info(TutorialInfo.InformationState.FIRST);
+	#tutorial.spawn_info(TutorialInfo.InformationState.FIRST);
 
 
 func EndGame():
