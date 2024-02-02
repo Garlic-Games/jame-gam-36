@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://lwdm327j0ytk"]
+[gd_scene load_steps=11 format=3 uid="uid://lwdm327j0ytk"]
 
 [ext_resource type="Script" path="res://Scripts/Intro/intro_animation.gd" id="1_7cccr"]
-[ext_resource type="PackedScene" uid="uid://bmejbh567cap8" path="res://Art/Models/big_candle.glb" id="2_yi6ea"]
+[ext_resource type="PackedScene" uid="uid://bmejbh567cap8" path="res://Art/Models/candles/big_candle.glb" id="2_yi6ea"]
 [ext_resource type="Material" uid="uid://cd16swm5tbiat" path="res://Art/Materials/Arena.tres" id="3_w6rsx"]
 [ext_resource type="Material" uid="uid://byasc07ch87b7" path="res://Art/Materials/Paredes.tres" id="4_q612i"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="5_u8a1r"]
+[ext_resource type="AudioStream" uid="uid://bei850m11hqmt" path="res://Art/Music/menu_music.mp3" id="6_a7vox"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_orxv4"]
 size = Vector3(30, 1, 30)
@@ -21,8 +22,9 @@ metallic_specular = 0.25
 material = SubResource("StandardMaterial3D_drphg")
 radial_segments = 6
 
-[node name="LevelAnim" type="Node3D" node_paths=PackedStringArray("label_subtitles", "fade_rectangle", "raygun", "raygun_target_transform")]
+[node name="LevelAnim" type="Node3D" node_paths=PackedStringArray("music", "label_subtitles", "fade_rectangle", "raygun", "raygun_target_transform")]
 script = ExtResource("1_7cccr")
+music = NodePath("Music")
 label_subtitles = NodePath("2D/Subtitles")
 fade_rectangle = NodePath("2D/FadeRect")
 raygun = NodePath("Raygun")
@@ -147,3 +149,8 @@ color = Color(0, 0, 0, 1)
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241533, 1.84311, 0.632392)
 omni_range = 0.884136
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_a7vox")
+volume_db = -40.0
+pitch_scale = 0.5

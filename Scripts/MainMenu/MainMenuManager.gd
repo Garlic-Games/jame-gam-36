@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var menu_music : AudioStreamPlayer = null;
 @export var click_audio : AudioStreamPlayer = null;
 @export var camera : Camera3D = null;
 @export var camera_waypoints : Node = null;
@@ -14,10 +15,17 @@ func _ready():
 		waypoints_transforms.append(node.global_transform);
 
 	camera.transform = waypoints_transforms[0];
-
+	
+	menu_music.play();
+	
+	var tween_music = get_tree().create_tween();
+	tween_music.tween_property(menu_music, "volume_db", 0.0, 1.0);
 
 func _on_start_game_pressed():
 	click_audio.play();
+	var tween_music = get_tree().create_tween();
+	tween_music.tween_property(menu_music, "volume_db", -40, 1.0);
+	
 	$Transitions/Fade/Animation.play("fade_out");
 	$Transitions/Fade/Animation.connect("animation_finished", func(_val): StartGame());
 

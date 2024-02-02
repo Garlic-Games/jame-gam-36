@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdu1thohecrr2"]
+[gd_scene load_steps=8 format=3 uid="uid://cdu1thohecrr2"]
 
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="1_mbuvp"]
-[ext_resource type="Texture2D" uid="uid://bbxusvfufrntg" path="res://Art/Textures/crosshair.png" id="2_parm1"]
+[ext_resource type="Texture2D" uid="uid://bbxusvfufrntg" path="res://Art/Textures/hud/crosshair.png" id="2_4yk6h"]
+[ext_resource type="FontFile" uid="uid://bqthgjhfjkkhh" path="res://Art/Fonts/New Era Casual Bold.ttf" id="3_ogxk8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ty8fe"]
 bg_color = Color(0, 0, 0, 0)
@@ -33,11 +34,11 @@ corner_radius_bottom_left = 500
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 6
 border_width_right = 6
-border_width_bottom = 6
+border_width_bottom = 10
 border_color = Color(0, 0, 0, 0.392157)
 border_blend = true
-corner_radius_bottom_right = 500
-corner_radius_bottom_left = 500
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxabn"]
 bg_color = Color(0.705882, 0, 0, 1)
@@ -46,8 +47,8 @@ border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0.219608, 0, 0, 1)
 border_blend = true
-corner_radius_bottom_right = 500
-corner_radius_bottom_left = 500
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_mbuvp")
@@ -64,7 +65,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_parm1")
+texture = ExtResource("2_4yk6h")
 stretch_mode = 2
 
 [node name="Ammo" type="ProgressBar" parent="."]
@@ -83,6 +84,31 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_he130")
 max_value = 150.0
 show_percentage = false
 
+[node name="FireUnits" type="Label" parent="Ammo"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 97.425
+offset_top = -48.5
+offset_right = 345.425
+offset_bottom = 48.5001
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_ogxk8")
+theme_override_font_sizes/font_size = 20
+text = "Fire Units"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Heat" type="ProgressBar" parent="."]
 layout_direction = 1
 anchors_preset = 6
@@ -98,8 +124,33 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_xjolt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gxabn")
-max_value = 1000.0
+max_value = 1200.0
 step = 1.0
 value = 500.0
 fill_mode = 3
 show_percentage = false
+
+[node name="HeatText" type="Label" parent="Heat"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -184.635
+offset_right = 124.0
+offset_bottom = -87.6351
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("3_ogxk8")
+theme_override_font_sizes/font_size = 20
+text = "Heat"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://mal72xb6sgs2"]
 
 [ext_resource type="Script" path="res://Scripts/Entities/moai.gd" id="1_f68mh"]
-[ext_resource type="PackedScene" uid="uid://dipbu4ku1tjo6" path="res://Art/Models/moai.glb" id="2_om5ou"]
+[ext_resource type="PackedScene" uid="uid://dipbu4ku1tjo6" path="res://Art/Models/moai/moai.glb" id="2_om5ou"]
 [ext_resource type="AudioStream" uid="uid://c2dmexipv1xxw" path="res://Art/Sounds/apagar fuego.wav" id="3_8f8dt"]
 [ext_resource type="AudioStream" uid="uid://b0rhghwo0h8v3" path="res://Art/Sounds/encender fuego.wav" id="4_63phs"]
 

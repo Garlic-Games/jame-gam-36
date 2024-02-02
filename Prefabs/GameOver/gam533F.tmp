@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://54n1o7mxvcbk"]
+
+[ext_resource type="Script" path="res://Scripts/Gameplay/GameOverManager.gd" id="1_gf200"]
+[ext_resource type="FontFile" uid="uid://bqthgjhfjkkhh" path="res://Art/Fonts/New Era Casual Bold.ttf" id="2_ovj8b"]
+
+[node name="GameOverMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_gf200")
+
+[node name="Fade" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Restart" type="Button" parent="."]
+process_mode = 2
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Restart"
+
+[node name="YouWon" type="Label" parent="."]
+top_level = true
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -48.5
+offset_right = 169.5
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_ovj8b")
+theme_override_font_sizes/font_size = 80
+text = "YOU    WON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestionMark" type="Label" parent="."]
+top_level = true
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 107.49
+offset_top = -170.785
+offset_right = 446.49
+offset_bottom = 135.215
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_ovj8b")
+theme_override_font_sizes/font_size = 210
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Restart" to="." method="RestartGamePressed"]

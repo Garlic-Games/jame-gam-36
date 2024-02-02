@@ -5,6 +5,8 @@ extends CharacterBody3D
 @export var speed: float = 5.0;
 @export var jump_speed: float = 5.0;
 @export var sensitivity : float = 2.0;
+@onready var model : MaleBody = $Model;
+@onready var steps : Steps = $Steps;
 
 signal player_hurt;
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -18,6 +20,16 @@ func _physics_process(delta):
 		velocity.y = jump_speed;
 	
 	var direction = get_direction();
+	if  direction == Vector3.ZERO:
+		steps.stop();
+		model.idle();
+	else :
+		if is_on_floor():
+			model.walk();		
+			steps.walk();
+		else:
+			steps.stop();
+			model.idle();
 	apply_velocity(direction);
 	move_and_slide();
 

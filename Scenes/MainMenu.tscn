@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjssovxl7m1cw"]
+[gd_scene load_steps=17 format=3 uid="uid://bjssovxl7m1cw"]
 
 [ext_resource type="Script" path="res://Scripts/MainMenu/MainMenuManager.gd" id="1_16dku"]
 [ext_resource type="PackedScene" uid="uid://cka4heni3dqxn" path="res://Prefabs/Entities/bird.tscn" id="2_t7nxy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="4_psbl3"]
 [ext_resource type="AudioStream" uid="uid://c6f6p5y22weoh" path="res://Art/Sounds/click.wav" id="5_l4y4e"]
 [ext_resource type="Script" path="res://Scripts/Menu/credits_menu.gd" id="5_t8nkq"]
+[ext_resource type="AudioStream" uid="uid://bei850m11hqmt" path="res://Art/Music/menu_music.mp3" id="8_o2da5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xvx3h"]
 sky_top_color = Color(0.203922, 0.67451, 1, 1)
@@ -49,8 +50,9 @@ func _process(delta):
 	pass
 "
 
-[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("click_audio", "camera", "camera_waypoints")]
+[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("menu_music", "click_audio", "camera", "camera_waypoints")]
 script = ExtResource("1_16dku")
+menu_music = NodePath("Audio/MenuMusic")
 click_audio = NodePath("Audio/ClickAudio")
 camera = NodePath("Background/Camera3D")
 camera_waypoints = NodePath("Background/Waypoints")
@@ -500,6 +502,12 @@ layer = 128
 
 [node name="ClickAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("5_l4y4e")
+bus = &"SFX"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_o2da5")
+volume_db = -40.0
+bus = &"Music"
 
 [connection signal="mouse_entered" from="Menu/Main/VBoxContainer/StartGame" to="." method="on_button_hovered"]
 [connection signal="pressed" from="Menu/Main/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]

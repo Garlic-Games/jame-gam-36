@@ -1,9 +1,14 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://byasc07ch87b7"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://byasc07ch87b7"]
+
+[ext_resource type="Texture2D" uid="uid://dayv1qkrkkmck" path="res://Art/Textures/environment/brick_wall.png" id="1_tv2vw"]
 
 [resource]
 resource_name = "Paredes"
 cull_mode = 2
 albedo_color = Color(0.530524, 0.38426, 0.149854, 1)
-metallic = 0.68
+albedo_texture = ExtResource("1_tv2vw")
+metallic = 0.28
 metallic_specular = 0.3
 roughness = 0.53
+uv1_scale = Vector3(0.705, 1, 1)
+uv1_triplanar = true

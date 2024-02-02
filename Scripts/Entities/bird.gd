@@ -96,7 +96,7 @@ func add_fire(fire_units : int):
 	else:
 		on_bird_heat_changed.emit(fire_units);
 		birdfire.emitting = true;
-		birdfire.amount = current_fire_units;
+		birdfire.amount = (current_fire_units if current_fire_units > 0  else 1);
 
 		
 	$SubViewport/ProgressBar.value = current_fire_units;

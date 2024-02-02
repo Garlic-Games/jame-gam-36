@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var menu_music : AudioStreamPlayer = null;
 @export var click_audio : AudioStreamPlayer = null;
 @export var text_fullscreen : Label = null;
 
@@ -12,8 +13,9 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventKey and event.is_action_pressed("esc"):
-		toggle_pause();
+	if GameStateMachine.currentState == GameStateMachine.GAME_STATE.PLAYING or GameStateMachine.currentState == null:
+		if event is InputEventKey and event.is_action_pressed("esc"):
+			toggle_pause();
 
 
 func toggle_pause():
@@ -22,8 +24,11 @@ func toggle_pause():
 
 	if is_paused:
 		self.show();
+		var tween_music = get_tree().create_tween();
+		menu_music.play(0.0);
 	else:
 		self.hide();
+		menu_music.stop();
 
 	if is_paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);
@@ -84,8 +89,3 @@ func _on_back_pressed():
 	click_audio.play();
 	$Settings.hide();
 	$Main.show();
-
-
-func _on_continue_presseda():
-	print("XD")
-	pass # Replace with function body.

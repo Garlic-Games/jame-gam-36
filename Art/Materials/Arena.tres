@@ -1,10 +1,11 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cd16swm5tbiat"]
 
-[ext_resource type="Texture2D" uid="uid://pmdjvfrtdhgs" path="res://Art/Textures/sand_texture.png" id="1_qas74"]
+[ext_resource type="Texture2D" uid="uid://pmdjvfrtdhgs" path="res://Art/Textures/environment/sand_texture.png" id="1_qas74"]
 
 [resource]
 resource_name = "Arena"
 cull_mode = 2
-albedo_color = Color(1, 0.852677, 0.353252, 1)
 albedo_texture = ExtResource("1_qas74")
-uv1_scale = Vector3(20, 20, 20)
+normal_scale = 13.61
+uv1_scale = Vector3(200, 200, 200)
+proximity_fade_distance = 0.0
