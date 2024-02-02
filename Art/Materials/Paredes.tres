@@ -4,5 +4,6 @@
 resource_name = "Paredes"
 cull_mode = 2
 albedo_color = Color(0.530524, 0.38426, 0.149854, 1)
-metallic = 0.480447
-roughness = 0.405028
+metallic = 0.68
+metallic_specular = 0.3
+roughness = 0.53
