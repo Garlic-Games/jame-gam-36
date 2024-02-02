@@ -506,6 +506,7 @@ bus = &"SFX"
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_o2da5")
+volume_db = -40.0
 bus = &"Music"
 
 [connection signal="mouse_entered" from="Menu/Main/VBoxContainer/StartGame" to="." method="on_button_hovered"]

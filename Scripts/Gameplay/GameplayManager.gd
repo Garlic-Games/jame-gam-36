@@ -12,8 +12,8 @@ func _ready():
 	heat.connect("on_heat_filled", turn_on_portal);
 	portal.connect("on_portal_entered", EndGame);
 	
-	var tween_animation = get_tree().create_tween();
-	tween_animation.tween_property(fade_rectangle, "color:a", 0.0, 2.5);
+	var tween_transition = get_tree().create_tween();
+	tween_transition.tween_property(fade_rectangle, "color:a", 0.0, 2.5);
 
 
 func EndGame():
