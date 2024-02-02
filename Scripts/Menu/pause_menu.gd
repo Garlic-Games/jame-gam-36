@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var menu_music : AudioStreamPlayer = null;
 @export var click_audio : AudioStreamPlayer = null;
 @export var text_fullscreen : Label = null;
 
@@ -23,8 +24,11 @@ func toggle_pause():
 
 	if is_paused:
 		self.show();
+		var tween_music = get_tree().create_tween();
+		menu_music.play(0.0);
 	else:
 		self.hide();
+		menu_music.stop();
 
 	if is_paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE);

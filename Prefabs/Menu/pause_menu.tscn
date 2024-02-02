@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://grnnbu2xcyt2"]
+[gd_scene load_steps=17 format=3 uid="uid://grnnbu2xcyt2"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/pause_menu.gd" id="1_wr44f"]
 [ext_resource type="FontFile" uid="uid://bqthgjhfjkkhh" path="res://Art/Fonts/New Era Casual Bold.ttf" id="2_l01gh"]
 [ext_resource type="AudioStream" uid="uid://c6f6p5y22weoh" path="res://Art/Sounds/click.wav" id="3_ajjjb"]
+[ext_resource type="AudioStream" uid="uid://bei850m11hqmt" path="res://Art/Music/menu_music.mp3" id="4_bdnmn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxge7"]
 
@@ -28,10 +29,11 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx7t3"]
 
-[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("click_audio", "text_fullscreen")]
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("menu_music", "click_audio", "text_fullscreen")]
 process_mode = 3
 layer = 128
 script = ExtResource("1_wr44f")
+menu_music = NodePath("MenuMusic")
 click_audio = NodePath("ClickAudio")
 text_fullscreen = NodePath("Settings/RowFullscreen/FullscreenButton/Text")
 
@@ -342,6 +344,11 @@ vertical_alignment = 1
 [node name="ClickAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ajjjb")
 bus = &"SFX"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bdnmn")
+volume_db = -10.0
+bus = &"Music"
 
 [connection signal="mouse_entered" from="Main/Continue" to="." method="_on_mouse_hovered"]
 [connection signal="pressed" from="Main/Continue" to="." method="_on_continue_pressed"]
