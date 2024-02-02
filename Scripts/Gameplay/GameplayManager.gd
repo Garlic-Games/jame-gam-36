@@ -3,6 +3,7 @@ class_name GameplayManager;
 
 @export var mainMusic : AudioStreamPlayer = null;
 @export var endMusic : AudioStreamPlayer = null;
+@export var tutorial : CanvasLayer = null;
 @export var gameOverMenu: GameOverManager;
 @export var heat : Node = null;
 @export var portal : Node3D = null;
@@ -18,6 +19,8 @@ func _ready():
 	tween_transition.tween_property(fade_rectangle, "color:a", 0.0, 2.5);
 	
 	mainMusic.play();
+	
+	tutorial.spawn_info(TutorialInfo.InformationState.FIRST);
 
 
 func EndGame():

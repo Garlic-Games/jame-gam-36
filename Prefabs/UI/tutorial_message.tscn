@@ -4,14 +4,8 @@
 [ext_resource type="Script" path="res://Scripts/UI/tutorial_info.gd" id="1_tymmj"]
 [ext_resource type="FontFile" uid="uid://bqthgjhfjkkhh" path="res://Art/Fonts/New Era Casual Bold.ttf" id="2_u1s2i"]
 
-[node name="TutorialMessage" type="Control" node_paths=PackedStringArray("texture_info", "label_info")]
+[node name="TutorialMessage" type="CanvasLayer" node_paths=PackedStringArray("texture_info", "label_info")]
 process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_tymmj")
 texture_info = NodePath("InfoTexture")
 label_info = NodePath("InfoTexture/Information")

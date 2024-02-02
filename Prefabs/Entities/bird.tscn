@@ -24,8 +24,8 @@ border_color = Color(0, 0, 0, 1)
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4j6iy"]
-radius = 0.191776
-height = 1.37754
+radius = 0.488695
+height = 1.94465
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_se03e"]
 resource_local_to_scene = true
@@ -116,6 +116,7 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_03qk1")
 
 [node name="bird" instance=ExtResource("1_26lmq")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_5a6ki")
 
 [node name="Armature" parent="." index="0"]

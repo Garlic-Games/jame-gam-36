@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://d3hehxwyluyfm"]
+[gd_scene load_steps=65 format=3 uid="uid://d3hehxwyluyfm"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_n5lw0"]
 [ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_1uyik"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/WaypointGroup.gd" id="4_pebhs"]
 [ext_resource type="PackedScene" uid="uid://u40l62v2dp8d" path="res://Prefabs/Obstacles/obstacle.tscn" id="5_cm0v1"]
 [ext_resource type="PackedScene" uid="uid://cdu1thohecrr2" path="res://Prefabs/UI/hud.tscn" id="6_5eabv"]
+[ext_resource type="PackedScene" uid="uid://de6hc1mx3pcal" path="res://Prefabs/UI/tutorial_message.tscn" id="6_mc4tr"]
 [ext_resource type="PackedScene" uid="uid://grnnbu2xcyt2" path="res://Prefabs/Menu/pause_menu.tscn" id="8_7otix"]
 [ext_resource type="PackedScene" uid="uid://ctuogdlqakgo4" path="res://Prefabs/Portal/portal.tscn" id="9_7ppj4"]
 [ext_resource type="Material" uid="uid://cd16swm5tbiat" path="res://Art/Materials/Arena.tres" id="9_b3mel"]
@@ -480,11 +481,12 @@ size = Vector3(50, 30, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0txc0"]
 size = Vector3(3, 30, 50)
 
-[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("mainMusic", "endMusic", "gameOverMenu", "heat", "portal", "fade_rectangle")]
+[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("mainMusic", "endMusic", "tutorial", "gameOverMenu", "heat", "portal", "fade_rectangle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120588, -0.017498, 0.0261469)
 script = ExtResource("1_n5lw0")
 mainMusic = NodePath("MainMusic")
 endMusic = NodePath("EndMusic")
+tutorial = NodePath("UI/TutorialMessage")
 gameOverMenu = NodePath("UI/GameOverMenu")
 heat = NodePath("Heat")
 portal = NodePath("Map/level1/Portal")
@@ -561,6 +563,8 @@ transform = Transform3D(2.47034, 0, 0, 0, 3.47125, 0, -7.10543e-15, 0, 0.399701,
 heat_threshold = 700
 
 [node name="UI" type="Node" parent="."]
+
+[node name="TutorialMessage" parent="UI" instance=ExtResource("6_mc4tr")]
 
 [node name="Hud" parent="UI" node_paths=PackedStringArray("heat", "player") instance=ExtResource("6_5eabv")]
 heat = NodePath("../../Heat")
