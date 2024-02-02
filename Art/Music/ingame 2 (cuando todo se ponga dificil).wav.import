@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bheiull2ip7fa"
+path="res://.godot/imported/ingame 2 (cuando todo se ponga dificil).wav-6114fe38fc7c56418313ff2b535a3e2c.sample"
+
+[deps]
+
+source_file="res://Art/Music/ingame 2 (cuando todo se ponga dificil).wav"
+dest_files=["res://.godot/imported/ingame 2 (cuando todo se ponga dificil).wav-6114fe38fc7c56418313ff2b535a3e2c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

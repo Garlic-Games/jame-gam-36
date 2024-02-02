@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://d3hehxwyluyfm"]
+[gd_scene load_steps=64 format=3 uid="uid://d3hehxwyluyfm"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_n5lw0"]
 [ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_1uyik"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dayv1qkrkkmck" path="res://Art/Textures/environment/brick_wall.png" id="10_ssx3t"]
 [ext_resource type="AudioStream" uid="uid://dwxwkwcx6pani" path="res://Art/Music/ingame 1.wav" id="14_q61xe"]
 [ext_resource type="AudioStream" uid="uid://bei850m11hqmt" path="res://Art/Music/menu_music.mp3" id="16_gs8cc"]
+[ext_resource type="AudioStream" uid="uid://bheiull2ip7fa" path="res://Art/Music/ingame 2 (cuando todo se ponga dificil).wav" id="16_v3fmi"]
+[ext_resource type="PackedScene" uid="uid://dl0sdxqbgajwj" path="res://Prefabs/music_fade.tscn" id="18_8688n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv5mp"]
 sky_top_color = Color(0.333333, 0.670588, 0.968627, 1)
@@ -920,7 +922,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412617, 9.40481, 74.3486)
 shape = SubResource("BoxShape3D_0txc0")
 
 [node name="Player" parent="." instance=ExtResource("3_iujbc")]
-transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 27.5891, 1.95274, -0.000249397)
+transform = Transform3D(0.000152707, -0.00117221, 0.999999, 0.000105694, 0.999999, 0.00117219, -1, 0.000105512, 0.000152833, 18.6518, 1.95274, 0.522687)
 
 [node name="Moai" parent="." node_paths=PackedStringArray("target", "obstacles", "waypoints") instance=ExtResource("9_scw40")]
 transform = Transform3D(1.88564, 0, 0, 0, 1.88564, 0, 0, 0, 1.88564, 4.59382, 6.8981, -10.2277)
@@ -1022,6 +1024,13 @@ transform = Transform3D(-0.484749, 0, -0.874654, 0, 1, 0, 0.874654, 0, -0.484749
 stream = ExtResource("14_q61xe")
 bus = &"Music"
 
+[node name="FinalZoneMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_v3fmi")
+volume_db = -40.0
+
 [node name="EndMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_gs8cc")
 volume_db = -40.0
+bus = &"Music"
+
+[node name="MusicFade" parent="." instance=ExtResource("18_8688n")]
