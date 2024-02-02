@@ -65,7 +65,8 @@ scale_max = 0.1
 [node name="Raygun" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.80496, -1.00338, -1.51233)
 script = ExtResource("1_466us")
-fire_units_per_tick = 20
+ammo_recharged_per_hit = 10
+fire_units_per_tick = 10
 
 [node name="BulletHole" type="Node3D" parent="."]
 

@@ -5,6 +5,7 @@
 [resource]
 resource_name = "Arena"
 cull_mode = 2
-albedo_color = Color(1, 0.852677, 0.353252, 1)
 albedo_texture = ExtResource("1_qas74")
-uv1_scale = Vector3(20, 20, 20)
+normal_scale = 13.61
+uv1_scale = Vector3(200, 200, 200)
+proximity_fade_distance = 0.0

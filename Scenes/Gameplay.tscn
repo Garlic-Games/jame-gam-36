@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://u40l62v2dp8d" path="res://Prefabs/Obstacles/obstacle.tscn" id="5_cm0v1"]
 [ext_resource type="PackedScene" uid="uid://cdu1thohecrr2" path="res://Prefabs/UI/hud.tscn" id="6_5eabv"]
 [ext_resource type="PackedScene" uid="uid://grnnbu2xcyt2" path="res://Prefabs/Menu/pause_menu.tscn" id="8_7otix"]
+[ext_resource type="Material" uid="uid://cd16swm5tbiat" path="res://Art/Materials/Arena.tres" id="9_b3mel"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_scw40"]
 [ext_resource type="Material" uid="uid://byasc07ch87b7" path="res://Art/Materials/Paredes.tres" id="10_h2erx"]
 [ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="10_hbl1l"]
@@ -34,11 +35,6 @@ tonemap_mode = 2
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l6t3m"]
 data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1.9324, 1, -1, -1, 1, -1, -1, -1, -1, 1.9324, -1, -1, 1.9324, 1, -1, 1.9324, -1, -1, 1.9324, 1, 1, 1.9324, 1, -1, 1.9324, -1, -1, 1.9324, -1, 1, 1.9324, 1, 1, 1.9324, -1, 1, -1, 1, 1, 1.9324, 1, 1, 1.9324, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1.9324, -1, 1, 1.9324, -1, -1, -1, -1, -1, -1, -1, 1, 1.9324, -1, 1, 1.9324, 1, -1, -1, 1, 1, -1, 1, -1, 1.9324, 1, -1, 1.9324, 1, 1, -1, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wstt2"]
-resource_name = "Arena"
-cull_mode = 2
-albedo_color = Color(1, 0.852677, 0.353252, 1)
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_kqbb0"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2.93242, 2, 2.00001),
@@ -61,7 +57,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray(0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0),
-"material": SubResource("StandardMaterial3D_wstt2"),
+"material": ExtResource("9_b3mel"),
 "name": "Arena",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -527,7 +523,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="Map/level1/Ceiling"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/level1/Ceiling/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -41.8012, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -84.755, 0)
 shape = SubResource("ConcavePolygonShape3D_l6t3m")
 
 [node name="Floor" type="MeshInstance3D" parent="Map/level1"]
@@ -613,7 +609,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675154, 0)
 shape = SubResource("CylinderShape3D_u8aqo")
 
 [node name="The Pedestal 3" type="MeshInstance3D" parent="Map/level1"]
-transform = Transform3D(-0.994814, 0, 0, 0, -1.14794, 0, 0, 0, -0.994814, -70.5593, 4.02359, -20.0206)
+transform = Transform3D(-0.994814, 0, 0, 0, -1.14794, 0, 0, 0, -0.994814, -70.5593, 1.43779, -20.0206)
 mesh = SubResource("ArrayMesh_kdqyo")
 skeleton = NodePath("")
 
@@ -864,7 +860,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.53393, 6.89437, -10.0677)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9653, 7.80279, -5.5714)
 
 [node name="Waypoint3" type="Node3D" parent="MoaiPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7803, 10.8954, -12.7836)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7803, 11.4236, -12.7836)
 
 [node name="Waypoint4" type="Node3D" parent="MoaiPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8288, 9.07156, 15.5276)

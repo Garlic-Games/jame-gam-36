@@ -53,7 +53,7 @@ func _process(delta):
 
 func shoot():
 	detect_entity_in_sight();
-	current_ammo -= 1;
+	current_ammo -= fire_units_per_tick;
 	on_ammo_changed.emit(current_ammo);
 
 

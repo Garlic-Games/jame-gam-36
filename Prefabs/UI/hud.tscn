@@ -36,8 +36,8 @@ border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0, 0, 0, 0.392157)
 border_blend = true
-corner_radius_bottom_right = 500
-corner_radius_bottom_left = 500
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gxabn"]
 bg_color = Color(0.705882, 0, 0, 1)
@@ -46,8 +46,8 @@ border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0.219608, 0, 0, 1)
 border_blend = true
-corner_radius_bottom_right = 500
-corner_radius_bottom_left = 500
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_mbuvp")
