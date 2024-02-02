@@ -23,7 +23,7 @@ func _on_start_game_pressed():
 
 
 func StartGame():
-	GameStateMachine.changeState(GameStateMachine.GAME_STATE.PLAYING);
+	GameStateMachine.changeState(GameStateMachine.GAME_STATE.ANIMATION);
 
 
 func _on_settings_pressed():

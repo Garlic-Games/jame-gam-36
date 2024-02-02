@@ -13,6 +13,7 @@ var lastState: GAME_STATE;
 signal stateChange(state, oldState);
 
 var mainMenu: String = "res://Scenes/MainMenu.tscn";
+var intro: String = "res://Scenes/Intro.tscn";
 var gameplay: String = "res://Scenes/Gameplay.tscn";
 
 func changeState(newState: GAME_STATE) -> bool:
@@ -26,6 +27,9 @@ func changeState(newState: GAME_STATE) -> bool:
 		GAME_STATE.MAIN_MENU:
 			root.paused = false;
 			root.change_scene_to_file(mainMenu);
+		GAME_STATE.ANIMATION:
+			root.paused = false;
+			root.change_scene_to_file(intro);
 		GAME_STATE.PLAYING:
 			root.paused = false;
 			if(lastState == GAME_STATE.GAME_OVER):
