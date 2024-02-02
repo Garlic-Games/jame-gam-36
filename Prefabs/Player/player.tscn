@@ -28,7 +28,7 @@ shape = SubResource("CapsuleShape3D_1j2vr")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902616, -0.468709)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.749651, -0.468709)
 script = ExtResource("2_deoer")
 mouse_sensitivity = 0.3
 
