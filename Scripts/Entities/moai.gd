@@ -91,6 +91,7 @@ func go_next_waypoint():
 	if waypoint_index + 1 < positions.size():
 		waypoint_index += 1;
 		position = positions[waypoint_index];
+		initial_position_y = position.y;
 
 
 func _on_sight_area_body_entered(body):
