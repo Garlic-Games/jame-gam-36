@@ -1,6 +1,7 @@
 extends Node
 
 func _input(event):
+	return;
 	if event is InputEventKey and event.is_action_pressed("esc"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);

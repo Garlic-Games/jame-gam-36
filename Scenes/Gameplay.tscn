@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://d3hehxwyluyfm"]
+[gd_scene load_steps=56 format=3 uid="uid://d3hehxwyluyfm"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/GameplayManager.gd" id="1_n5lw0"]
 [ext_resource type="PackedScene" uid="uid://54n1o7mxvcbk" path="res://Prefabs/GameOver/game_over_menu.tscn" id="2_1uyik"]
@@ -9,8 +9,9 @@
 [ext_resource type="Script" path="res://Scripts/Entities/WaypointGroup.gd" id="4_pebhs"]
 [ext_resource type="PackedScene" uid="uid://u40l62v2dp8d" path="res://Prefabs/Obstacles/obstacle.tscn" id="5_cm0v1"]
 [ext_resource type="PackedScene" uid="uid://cdu1thohecrr2" path="res://Prefabs/UI/hud.tscn" id="6_5eabv"]
+[ext_resource type="PackedScene" uid="uid://grnnbu2xcyt2" path="res://Prefabs/Menu/pause_menu.tscn" id="8_7otix"]
 [ext_resource type="PackedScene" uid="uid://mal72xb6sgs2" path="res://Prefabs/Entities/moai.tscn" id="9_scw40"]
-[ext_resource type="Material" path="res://Art/Materials/Paredes.tres" id="10_h2erx"]
+[ext_resource type="Material" uid="uid://byasc07ch87b7" path="res://Art/Materials/Paredes.tres" id="10_h2erx"]
 [ext_resource type="PackedScene" uid="uid://07setvq065rx" path="res://Prefabs/Transitions/fade.tscn" id="10_hbl1l"]
 [ext_resource type="Script" path="res://Scripts/Animations/fade.gd" id="11_w5rti"]
 [ext_resource type="AudioStream" uid="uid://dwxwkwcx6pani" path="res://Art/Music/ingame 1.wav" id="14_q61xe"]
@@ -420,8 +421,9 @@ size = Vector3(50, 30, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0txc0"]
 size = Vector3(3, 30, 50)
 
-[node name="Gameplay" type="Node3D"]
+[node name="Gameplay" type="Node3D" node_paths=PackedStringArray("gameOverMenu")]
 script = ExtResource("1_n5lw0")
+gameOverMenu = NodePath("UI/GameOverMenu")
 
 [node name="Heat" type="Node" parent="." node_paths=PackedStringArray("birds")]
 script = ExtResource("2_7pvfv")
@@ -502,6 +504,8 @@ player = NodePath("../../Player")
 [node name="GameOverMenu" parent="UI" instance=ExtResource("2_1uyik")]
 layer = 10
 visible = false
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("8_7otix")]
 
 [node name="Map" type="Node" parent="."]
 
