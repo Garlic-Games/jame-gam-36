@@ -56,8 +56,8 @@ func _process(delta):
 			timer_shoot = 0;
 			shoot(target);
 
-func check_if_facing(target: Vector3, threshold: float) -> bool: 
-	var dir = global_position.direction_to(target);
+func check_if_facing(_target: Vector3, threshold: float) -> bool: 
+	var dir = global_position.direction_to(_target);
 	var product = dir.dot(basis.z.normalized());
 	return  product > threshold;
 

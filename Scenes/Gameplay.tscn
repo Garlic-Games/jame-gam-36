@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/Entities/WaypointGroup.gd" id="4_pebhs"]
 [ext_resource type="PackedScene" uid="uid://u40l62v2dp8d" path="res://Prefabs/Obstacles/obstacle.tscn" id="5_cm0v1"]
 [ext_resource type="PackedScene" uid="uid://cdu1thohecrr2" path="res://Prefabs/UI/hud.tscn" id="6_5eabv"]
-[ext_resource type="PackedScene" path="res://Prefabs/UI/tutorial_message.tscn" id="6_mc4tr"]
+[ext_resource type="PackedScene" uid="uid://de6hc1mx3pcal" path="res://Prefabs/UI/tutorial_message.tscn" id="6_mc4tr"]
 [ext_resource type="PackedScene" uid="uid://grnnbu2xcyt2" path="res://Prefabs/Menu/pause_menu.tscn" id="8_7otix"]
 [ext_resource type="PackedScene" uid="uid://ctuogdlqakgo4" path="res://Prefabs/Portal/portal.tscn" id="9_7ppj4"]
 [ext_resource type="Material" uid="uid://cd16swm5tbiat" path="res://Art/Materials/Arena.tres" id="9_b3mel"]
